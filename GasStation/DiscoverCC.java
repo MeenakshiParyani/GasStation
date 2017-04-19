@@ -6,10 +6,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class DiscoverCC extends Card
+public class DiscoverCC extends Card implements IDisplayComponent
 {
-    public DiscoverCC(int x, int y, Color color, String text) {
-		super(x, y, color, text);
+	public DiscoverCC(World world) {
+		super(world);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -19,6 +19,6 @@ public class DiscoverCC extends Card
      */
     public void act() 
     {
-        // Add your action code here.
-    }    
+    	
+    }
 }

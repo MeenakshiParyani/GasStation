@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CancelButton extends Buttons
 {
-    public CancelButton(int x, int y, Color color, String text) {
-		super(x, y, color, text);
+    public CancelButton(World world) {
+		super(world);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class OkButton extends Buttons
 {
-    public OkButton(int x, int y, Color color, String text) {
-		super(x, y, color, text);
+	public OkButton(World world) {
+		super(world);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -6,11 +6,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class GasOptions extends Buttons
+public class GasOptions extends Screen implements IDisplayComponent
 {
-    public GasOptions(int x, int y, Color color, String text) {
-		super(x, y, color, text);
-		// TODO Auto-generated constructor stub
+	private World world;
+	
+	public GasOptions(World world) {
+		this.world = world;
 	}
 
 	/**
@@ -20,5 +21,9 @@ public class GasOptions extends Buttons
     public void act() 
     {
         // Add your action code here.
-    }    
+    }
+    
+    public void display() {
+    	world.addObject(this, 725, 400);
+    }
 }

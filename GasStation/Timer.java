@@ -8,7 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Timer extends Display
 {
-    /**
+    public Timer(World world) {
+		super(world);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
      * Act - do whatever the Timer wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */

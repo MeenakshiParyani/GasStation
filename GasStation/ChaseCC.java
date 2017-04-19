@@ -6,10 +6,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ChaseCC extends Card
+public class ChaseCC extends Card implements IDisplayComponent
 {
-    public ChaseCC(int x, int y, Color color, String text) {
-		super(x, y, color, text);
+	public ChaseCC(World world) {
+		super(world);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -20,5 +20,5 @@ public class ChaseCC extends Card
     public void act() 
     {
         // Add your action code here.
-    }    
+    }
 }

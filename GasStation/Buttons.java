@@ -9,20 +9,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Buttons extends GasStation
 {
     
-    GreenfootImage gi = getImage();
+    public Buttons(World world) {
+		super(world);
+		// TODO Auto-generated constructor stub
+	}
     /**
      * Act - do whatever the Buttons wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    
-    public Buttons(int x, int y, Color color, String text){
-        gi.scale( x, y ) ; 
-        gi.clear();
-        gi.setColor(color);
-        gi.fill();
-        gi.setColor(Color.BLACK);
-        gi.drawString(text,  40, 25);
-    }
     
     public void act() 
     {
