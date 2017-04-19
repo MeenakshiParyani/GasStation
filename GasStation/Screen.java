@@ -11,7 +11,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Screen extends Actor implements IDisplayComponent
 {
-    private static boolean flag = true;
+    private boolean flag = true;
 	private List<IDisplayComponent> components = new ArrayList<>();
 	/**
      * Act - do whatever the Screen wants to do. This method is called whenever
