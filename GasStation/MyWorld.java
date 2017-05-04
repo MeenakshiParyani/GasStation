@@ -43,18 +43,20 @@ public class MyWorld extends World
         GasOptions fuelType =new GasOptions(this);
 
         //composite pattern for all gas station components
+        gasStation.addSubComponent(messages);
         gasStation.addSubComponent(scanner);
         gasStation.addSubComponent(printer);
         gasStation.addSubComponent(buttons);
-        gasStation.addSubComponent(messages);
         gasStation.addSubComponent(fuelType);
 
-        //composite pattern for the whole screen
-        screen.addSubComponent(card);
+        //composite pattern for the whole screen        
+
         screen.addSubComponent(gasStation);
+        screen.addSubComponent(carWashArea);
+        screen.addSubComponent(card);
         screen.addSubComponent(pumpNozel);
         screen.addSubComponent(car);
-        screen.addSubComponent(carWashArea);
+        
 
         addObject(screen, 50, 50);
     }
