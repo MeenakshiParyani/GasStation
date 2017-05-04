@@ -11,6 +11,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GasStation extends Screen implements IDisplayComponent
 {
+    public boolean ok = true;
+
 	private World world;
 	private List<IDisplayComponent> components = new ArrayList<>();
 	
@@ -23,8 +25,13 @@ public class GasStation extends Screen implements IDisplayComponent
      */
     public void act() 
     {
-        // Add your action code here.
+
+    	if(ok==true){
+    		PrintReceipt rp = getWorld().getObjects(PrintReceipt.class).get(0);
+    		rp.calculateReceipt(15, false, 93);
+    	}
     }
+    
 
 	@Override
 	public void display() {
