@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class DiscoverCC extends Card implements IDisplayComponent
 {
+    double discount = 0.0;
 	public DiscoverCC(World world) {
 		super(world);
 		// TODO Auto-generated constructor stub
@@ -19,6 +20,6 @@ public class DiscoverCC extends Card implements IDisplayComponent
      */
     public void act() 
     {
-    	
+    	super.act();
     }
 }

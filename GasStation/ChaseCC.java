@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ChaseCC extends Card implements IDisplayComponent
 {
+    double discount = 0.02;
 	public ChaseCC(World world) {
 		super(world);
 		// TODO Auto-generated constructor stub
@@ -19,6 +20,6 @@ public class ChaseCC extends Card implements IDisplayComponent
      */
     public void act() 
     {
-        // Add your action code here.
+        super.act();
     }
 }
