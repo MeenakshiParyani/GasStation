@@ -24,7 +24,7 @@ public class MyWorld extends World
         GasStation gasStation = new GasStation(this);
         PumpNozel pumpNozel = new PumpNozel(this);
         Car car = new Car(this);
-        CarWashArea carWashArea = new CarWashArea(this);
+    //    CarWashArea carWashArea = new CarWashArea(this);
         Screen screen = new Screen();
 
         DiscoverCC discoverCreditCard = new DiscoverCC(this);
@@ -52,14 +52,17 @@ public class MyWorld extends World
         //composite pattern for the whole screen        
 
         screen.addSubComponent(gasStation);
-        screen.addSubComponent(carWashArea);
+  //      screen.addSubComponent(carWashArea);
         screen.addSubComponent(card);
         screen.addSubComponent(pumpNozel);
         screen.addSubComponent(car);
-	 screen.addSubComponent(display);
+        screen.addSubComponent(display);
         
 
         addObject(screen, 50, 50);
+       
+  //     This should be called when customer asks for a car wash from the respective class
+  //      Greenfoot.setWorld(new CarWashWorld());
     }
     
     
