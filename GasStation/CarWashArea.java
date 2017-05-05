@@ -1,5 +1,7 @@
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
+
+//import com.sun.javafx.iio.gif.GIFImageLoader2;
 
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
@@ -13,8 +15,10 @@ public class CarWashArea extends Screen implements IDisplayComponent
 {
 	private World world;
 	
-	public CarWashArea(World world) {
+	public CarWashArea(World world) 
+	{
 		this.world = world;
+		
 	}
 	/**
      * Act - do whatever the CarWashArea wants to do. This method is called whenever
@@ -23,9 +27,12 @@ public class CarWashArea extends Screen implements IDisplayComponent
     public void act() 
     {
         // Add your action code here.
+    
     }
     
     public void display() {
-		world.addObject((Actor) this, 900, 525);
+    	GreenfootImage image = getImage();
+        image.scale(900,500);
+		world.addObject((Actor) this, 650, 300);
 	}
 }
