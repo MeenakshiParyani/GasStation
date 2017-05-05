@@ -16,17 +16,17 @@ public class NoZipcodeDigit implements IZipcodeState {
 	@Override
 	public void number(String digit) {
 		// TODO Auto-generated method stub
-		zip.setStateOnePinDigit(digit);
+		zip.setStateOneZipcodeDigit(digit);
 	}
 
 	@Override
-	public void validPin() {
+	public void validZipcode() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void invalidPin() {
+	public void invalidZipcode() {
 		// TODO Auto-generated method stub
 		
 	}

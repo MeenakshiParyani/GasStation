@@ -10,23 +10,23 @@ public class TwoZipcodeDigit implements IZipcodeState {
 	@Override
 	public void backspace() {
 		// TODO Auto-generated method stub
-		zip.setStateOnePinDigit(null);
+		zip.setStateOneZipcodeDigit(null);
 	}
 
 	@Override
 	public void number(String digit) {
 		// TODO Auto-generated method stub
-		zip.setStateThreePinDigits(digit);
+		zip.setStateThreeZipcodeDigits(digit);
 	}
 
 	@Override
-	public void validPin() {
+	public void validZipcode() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void invalidPin() {
+	public void invalidZipcode() {
 		// TODO Auto-generated method stub
 		
 	}

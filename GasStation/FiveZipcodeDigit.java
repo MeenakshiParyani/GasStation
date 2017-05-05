@@ -10,7 +10,7 @@ public class FiveZipcodeDigit implements IZipcodeState {
 	@Override
 	public void backspace() {
 		// TODO Auto-generated method stub
-		zip.setStateFourPinDigits(null);
+		zip.setStateFourZipcodeDigits(null);
 	}
 
 	@Override
@@ -20,15 +20,15 @@ public class FiveZipcodeDigit implements IZipcodeState {
 	}
 
 	@Override
-	public void validPin() {
+	public void validZipcode() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void invalidPin() {
+	public void invalidZipcode() {
 		// TODO Auto-generated method stub
-		zip.setStateNoPinDigits();
+		zip.setStateNoZipcodeDigits();
 	}
 
 }

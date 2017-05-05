@@ -3,13 +3,13 @@ public interface IZipcodeStateMachine {
 
 	void backspace() ;
     void number( String digit ) ;
-    void validPin() ;
-    void invalidPin() ;
+    void validZipcode() ;
+    void invalidZipcode() ;
 
-    void setStateNoPinDigits() ;
-    void setStateOnePinDigit( String digit ) ;
-    void setStateTwoPinDigits( String digit ) ;
-    void setStateThreePinDigits( String digit ) ;
-    void setStateFourPinDigits( String digit ) ;
-    void setStateFivePinDigits( String digit ) ;
+    void setStateNoZipcodeDigits() ;
+    void setStateOneZipcodeDigit( String digit ) ;
+    void setStateTwoZipcodeDigits( String digit ) ;
+    void setStateThreeZipcodeDigits( String digit ) ;
+    void setStateFourZipcodeDigits( String digit ) ;
+    void setStateFiveZipcodeDigits( String digit ) ;
 }

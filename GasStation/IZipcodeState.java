@@ -3,6 +3,6 @@ public interface IZipcodeState {
 
 	void backspace() ;
     void number( String digit ) ;
-    void validPin() ;
-    void invalidPin() ;
+    void validZipcode() ;
+    void invalidZipcode() ;
 }

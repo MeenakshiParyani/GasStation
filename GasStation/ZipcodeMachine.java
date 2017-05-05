@@ -12,6 +12,9 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 	private String d1, d2, d3, d4, d5 ;
 	private int count;
 	
+	private String zipcode = "90210";
+	boolean authenticated = false;
+	
 	public ZipcodeMachine() {
 		zip0 = new NoZipcodeDigit(this);
 		zip1 = new OneZipcodeDigit(this);
@@ -40,19 +43,19 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 	}
 
 	@Override
-	public void validPin() {
+	public void validZipcode() {
 		// TODO Auto-generated method stub
-		this.state.validPin();
+		this.state.validZipcode();
 	}
 
 	@Override
-	public void invalidPin() {
+	public void invalidZipcode() {
 		// TODO Auto-generated method stub
-		this.state.invalidPin();
+		this.state.invalidZipcode();
 	}
 
 	@Override
-	public void setStateNoPinDigits() {
+	public void setStateNoZipcodeDigits() {
 		// TODO Auto-generated method stub
 		this.count = 0;
 		this.state = zip0;
@@ -65,7 +68,7 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 	}
 
 	@Override
-	public void setStateOnePinDigit(String digit) {
+	public void setStateOneZipcodeDigit(String digit) {
 		// TODO Auto-generated method stub
 		this.count = 1;
 		this.state = zip1;
@@ -79,7 +82,7 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 	}
 
 	@Override
-	public void setStateTwoPinDigits(String digit) {
+	public void setStateTwoZipcodeDigits(String digit) {
 		// TODO Auto-generated method stub
 		this.count = 2;
 		this.state = zip2;
@@ -92,7 +95,7 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 	}
 
 	@Override
-	public void setStateThreePinDigits(String digit) {
+	public void setStateThreeZipcodeDigits(String digit) {
 		// TODO Auto-generated method stub
 		this.count = 3;
 		this.state = zip3;
@@ -104,7 +107,7 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 	}
 
 	@Override
-	public void setStateFourPinDigits(String digit) {
+	public void setStateFourZipcodeDigits(String digit) {
 		// TODO Auto-generated method stub
 		this.count = 4;
 		this.state = zip4;
@@ -112,10 +115,22 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 			this.d5 = "*";
 		else this.d4 = digit;
         display() ;
+        
+        System.out.println( "Authenticating..." ) ;
+        if ( zipcode.equals( d1+d2+d3+d4 ) )
+        {
+            System.out.println( "Success!" ) ;
+            this.authenticated = true ;
+        }
+        else
+        {
+            System.out.println( "Failed!" ) ;
+            setStateNoZipcodeDigits() ;
+        }
 	}
 
 	@Override
-	public void setStateFivePinDigits(String digit) {
+	public void setStateFiveZipcodeDigits(String digit) {
 		// TODO Auto-generated method stub
 		this.count = 5;
 		this.state = zip5;
