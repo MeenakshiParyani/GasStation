@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -6,21 +8,40 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Car extends Screen implements IDisplayComponent {
-	private World world;
+public class Car extends Screen implements IDisplayComponent 
+{
 	
-	public Car(World world) {
-		this.world = world;
-	}
-	/**
-     * Act - do whatever the Car wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+		GreenfootImage gi = getImage();
+		private List<IDisplayComponent> cars = new ArrayList();
+		private World world;
+		/**
+	     * Act - do whatever the Card wants to do. This method is called whenever
+	     * the 'Act' or 'Run' button gets pressed in the environment.
+	     */
+		public Car(World world)
+		{
+			this.world = world;
+		}
+
+		@Override
+		public void display() {
+			// TODO Auto-generated method stub
+			//int x = 100;
+			for (IDisplayComponent car : cars) {
+				world.addObject((Actor) car, 100, 500);
+				//x += 100;
+			}
+		}
+
+	    
+
     public void act() {
         // Add your action code here.
     }
 
-	public void display() {
-		world.addObject((Actor) this, 150, 525);
-	} 
+	@Override
+	public void addSubComponent(IDisplayComponent c) {
+		// TODO Auto-generated method stub
+		cars.add( c );
+	}
 }
