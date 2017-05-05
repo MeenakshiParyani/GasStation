@@ -30,7 +30,7 @@ public class MyWorld extends World
         DiscoverCC discoverCreditCard = new DiscoverCC(this);
         ChaseCC chaseCreditCard = new ChaseCC(this);
         FakeCC fakeCreditCard = new FakeCC(this);
-
+	Display display = new Display(this);
         // composite pattern for all card objects
         card.addSubComponent(discoverCreditCard);
         card.addSubComponent(chaseCreditCard);
@@ -56,6 +56,7 @@ public class MyWorld extends World
         screen.addSubComponent(card);
         screen.addSubComponent(pumpNozel);
         screen.addSubComponent(car);
+	 screen.addSubComponent(display);
         
 
         addObject(screen, 50, 50);
