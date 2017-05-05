@@ -21,12 +21,47 @@ public class PumpNozel extends Screen implements IDisplayComponent
      */
     public void act() 
     {
-        // Add your action code here.
+    	
+    	int mouseX, mouseY;
+    	   
+        // this becomes true when the object is clicked and draggged using mouse
+        
+        if(Greenfoot.mouseDragged(this))  
+        {
+        	System.out.println("dragging");
+            MouseInfo mouse = Greenfoot.getMouseInfo();
+            mouseX=mouse.getX();
+            mouseY=mouse.getY();
+            setLocation(mouseX, mouseY);
+        }
+        
+        dispenseGas();
+
+        
     }
     
-    @Override
 	public void display() {
-		// TODO Auto-generated method stub
-		world.addObject((Actor) this, 920, 150);
+		world.addObject((Actor) this, 800, 150);
 	}
+    
+    public void dispenseGas(){
+    	
+    	Actor pumpNozel = getOneObjectAtOffset(0, 0, Car.class);
+    	System.out.println(pumpNozel);
+		Clock c = new Clock();
+    	if(pumpNozel==null){
+    		System.out.println("entered");
+    		c.drawGas = true;
+
+    	}
+    	else{
+    		c.drawGas = false;
+    	}
+
+
+        this.getWorld().addObject(c, 448, 168);
+
+    	
+    }
+    
 }
