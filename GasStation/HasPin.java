@@ -21,9 +21,9 @@ public class HasPin implements CardState {
 		
 	}
 
-	public void insertPin(int pinEntered) {
+	public void insertPin() {
 		
-		System.out.println("You already entered a zipcode");
+		System.out.println("You already entered Pin");
 		
 	}	
 }

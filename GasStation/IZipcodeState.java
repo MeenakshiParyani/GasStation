@@ -2,7 +2,9 @@
 public interface IZipcodeState {
 
 	void backspace() ;
+	void cancel() ;
+	void enter() ;
     void number( String digit ) ;
-    void validZipcode() ;
+    boolean validZipcode() ;
     void invalidZipcode() ;
 }

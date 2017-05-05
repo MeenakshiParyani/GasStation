@@ -35,7 +35,7 @@ public class PumpNozel extends Screen implements IDisplayComponent
             setLocation(mouseX, mouseY);
         }
         
-        dispenseGas();
+       // dispenseGas();
 
         
     }

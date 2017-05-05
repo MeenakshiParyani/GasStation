@@ -78,11 +78,11 @@ public class Display extends Screen implements IDisplayComponent
     public void act()
     {
         // Add your action code here.
-    	MouseInfo mouse = Greenfoot.getMouseInfo();
+    	/*MouseInfo mouse = Greenfoot.getMouseInfo();
     	 if (Greenfoot.mouseClicked(null))
          {
-         	System.out.println("x "+mouse.getX()+" y: "+mouse.getY());
-         }
+        	System.out.println("x "+mouse.getX()+" y: "+mouse.getY());
+         }*/
 //    	if(Greenfoot.mousePressed(this))
 //        {
 //            World world = getWorld();

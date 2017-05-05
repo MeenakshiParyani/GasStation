@@ -20,7 +20,8 @@ public class FourZipcodeDigit implements IZipcodeState {
 	}
 
 	@Override
-	public void validZipcode() {
+	public boolean validZipcode() {
+		return false;
 		// TODO Auto-generated method stub
 		
 	}
@@ -29,6 +30,18 @@ public class FourZipcodeDigit implements IZipcodeState {
 	public void invalidZipcode() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void cancel() {
+		// TODO Auto-generated method stub
+		zip.setStateNoZipcodeDigits();
+	}
+
+	@Override
+	public void enter() {
+		// TODO Auto-generated method stub
+		zip.authenticateZipcode();
 	}
 
 }

@@ -20,15 +20,27 @@ public class FiveZipcodeDigit implements IZipcodeState {
 	}
 
 	@Override
-	public void validZipcode() {
+	public boolean validZipcode() {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 
 	@Override
 	public void invalidZipcode() {
 		// TODO Auto-generated method stub
 		zip.setStateNoZipcodeDigits();
+	}
+
+	@Override
+	public void cancel() {
+		// TODO Auto-generated method stub
+		zip.setStateNoZipcodeDigits();
+	}
+
+	@Override
+	public void enter() {
+		// TODO Auto-generated method stub
+		zip.authenticateZipcode();
 	}
 
 }

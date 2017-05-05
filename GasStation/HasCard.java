@@ -21,21 +21,10 @@ public class HasCard implements CardState {
 		
 	}
 
-	public void insertPin(int pinEntered) {
+	public void insertPin() {
 		
-		if(pinEntered == 1234){
-			
-			System.out.println("You entered the correct ZipCode");
-			cardMachine.correctPinEntered = true;
+			System.out.println("Please Enter Zip Code");
 			cardMachine.setCardState(cardMachine.getHasPin());
 			
-		} else {
-			
-			System.out.println("You entered the wrong ZipCode");
-			cardMachine.correctPinEntered = false;
-			System.out.println("Your card is ejected");
-			cardMachine.setCardState(cardMachine.getNoCardState());
-			
 		}	
-	}	
 }

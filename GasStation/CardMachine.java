@@ -29,6 +29,7 @@ public class CardMachine  {
 		
 		cardState.insertCard();
 		
+		
 	}
 
 	public void ejectCard() {
@@ -38,9 +39,9 @@ public class CardMachine  {
 	}
 
 
-	public void insertPin(int pinEntered){
+	public void insertPin(){
 		
-		cardState.insertPin(pinEntered);
+		cardState.insertPin();
 		
 	}
 	

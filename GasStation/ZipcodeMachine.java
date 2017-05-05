@@ -43,9 +43,9 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 	}
 
 	@Override
-	public void validZipcode() {
+	public boolean validZipcode() {
 		// TODO Auto-generated method stub
-		this.state.validZipcode();
+		return this.state.validZipcode();
 	}
 
 	@Override
@@ -115,18 +115,6 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 			this.d5 = "*";
 		else this.d4 = digit;
         display() ;
-        
-        System.out.println( "Authenticating..." ) ;
-        if ( zipcode.equals( d1+d2+d3+d4 ) )
-        {
-            System.out.println( "Success!" ) ;
-            this.authenticated = true ;
-        }
-        else
-        {
-            System.out.println( "Failed!" ) ;
-            setStateNoZipcodeDigits() ;
-        }
 	}
 
 	@Override
@@ -138,8 +126,37 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
         display() ;
 	}
 	
+	@Override
+	public void authenticateZipcode() {
+		// TODO Auto-generated method stub
+		System.out.println( "Authenticating..." ) ;
+        if ( zipcode.equals( d1+d2+d3+d4+d5 ) )
+        {
+            System.out.println( "Success!" ) ;
+            this.authenticated = true ;
+            this.state.validZipcode();
+        }
+        else
+        {
+            System.out.println( "Failed!" ) ;
+            setStateNoZipcodeDigits() ;
+        }
+	}
+	
 	public void display() {
 		System.out.println(d1 + " " + d2 + " " + d3 + " " + d4 + " " + d5);
+	}
+
+	@Override
+	public void cancel() {
+		// TODO Auto-generated method stub
+		this.state.cancel();
+	}
+
+	@Override
+	public void enter() {
+		// TODO Auto-generated method stub
+		this.state.enter();
 	}
 
 }

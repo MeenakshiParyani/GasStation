@@ -2,8 +2,10 @@
 public interface IZipcodeStateMachine {
 
 	void backspace() ;
+	void cancel() ;
+	void enter() ;
     void number( String digit ) ;
-    void validZipcode() ;
+    boolean validZipcode() ;
     void invalidZipcode() ;
 
     void setStateNoZipcodeDigits() ;
@@ -12,4 +14,5 @@ public interface IZipcodeStateMachine {
     void setStateThreeZipcodeDigits( String digit ) ;
     void setStateFourZipcodeDigits( String digit ) ;
     void setStateFiveZipcodeDigits( String digit ) ;
+	void authenticateZipcode();
 }

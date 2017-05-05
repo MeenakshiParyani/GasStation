@@ -25,11 +25,11 @@ public class GasStation extends Screen implements IDisplayComponent
     public void act() 
     {
 
-    	MouseInfo mouse = Greenfoot.getMouseInfo();
+    /*	MouseInfo mouse = Greenfoot.getMouseInfo();
    	 if (Greenfoot.mouseClicked(null))
         {
         	System.out.println("x "+mouse.getX()+" y: "+mouse.getY());
-        }
+        }*/
     }
     
 

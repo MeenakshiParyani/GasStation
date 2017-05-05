@@ -13,6 +13,11 @@ public class NoCard implements CardState {
 	public void insertCard() {
 		
 		System.out.println("Processing...Please wait!");
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		cardMachine.setCardState(cardMachine.getYesCardState());
 		
 		
@@ -24,7 +29,7 @@ public class NoCard implements CardState {
 		
 	}
 
-	public void insertPin(int pinEntered) {
+	public void insertPin() {
 		
 		System.out.println("You have not entered your card");
 		

@@ -13,12 +13,15 @@ public class CardScanner extends Screen implements IDisplayComponent
     CardMachine cardmachine;
     boolean f = true;
     ZipcodeMachine zipcodemachine;
+    boolean flag = true;
+    GasOptions go;
     
     
     public CardScanner(World world) {
         this.world = world;
         this.cardmachine = new CardMachine();
         this.zipcodemachine = new ZipcodeMachine();
+        this.go = new GasOptions(world);
     }
 
     /**
@@ -27,39 +30,120 @@ public class CardScanner extends Screen implements IDisplayComponent
      */
     public void act() 
     {
-        if (getOneIntersectingObject(Card.class) != null && f)
+        if (getOneIntersectingObject(Card.class) != null)
         {
-        	f = false;
             c = (Card)getOneIntersectingObject(Card.class);
-            getWorld().removeObject(c);
+            
          
             System.out.println("c.getClass" + c.getClass());
             
         if ( c.getClass() == ChaseCC.class)
         {
-            cardmachine.insertCard();
-           // Greenfoot.delay(2);
-            System.out.println("Insert Zip Code");
+        	getWorld().removeObject(getWorld().getObjects(ChaseCC.class).get(0));
+        	cardmachine.insertCard();
+        	if (flag)
+        	{
+        		
+        		cardmachine.insertPin();
+        		flag = false;
+        	}
+           // System.out.println("Insert Zip Code");
             
         }
-        if ( c.getClass() == FakeCC.class)
+        if ( c.getClass() == FakeCC.class && f)
         {
-            cardmachine.insertCard();
-           // Greenfoot.delay(1);
+        	f = false;
+        	getWorld().removeObject(getWorld().getObjects(FakeCC.class).get(0));
+        	cardmachine.insertCard();
             cardmachine.ejectCard();
-            Greenfoot.delay(3);
-            getWorld().addObject(c, 350, 350);
+            getWorld().addObject(new FakeCC(getWorld()), 100, 350);
             
         }
         if ( c.getClass() == DiscoverCC.class)
         {
-            cardmachine.insertCard();
-            //Greenfoot.delay(5);
-            System.out.println("Insert Zip Code");
+        	getWorld().removeObject(getWorld().getObjects(DiscoverCC.class).get(0));
+        	
+        	cardmachine.insertCard();
+        	if (flag)
+        	{
+        		
+        		cardmachine.insertPin();
+        		flag = false;
+        	}
+
+        		
+          //  System.out.println("Insert Zip Code");
 
             
         }
         }
+                
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+   	 if (Greenfoot.mouseClicked(null) && ((!flag) && cardmachine.cardState.getClass().getCanonicalName() == cardmachine.hasCorrectPin.getClass().getCanonicalName()))
+        {
+   		//System.out.println("After" );
+   		 	if (mouse.getX() >= 370 && mouse.getX()<=525 && mouse.getY() >= 280 && mouse.getY() <= 450)
+   		 	{
+   		 //		System.out.println("Box");
+   		 		if (mouse.getX() >= 379 && mouse.getX()<=403 && mouse.getY() >= 291 && mouse.getY() <= 315)
+   		 		{
+   		 			zipcodemachine.number("1");
+   		 		}
+   		 		if (mouse.getX() >= 411 && mouse.getX()<=437 && mouse.getY() >= 291 && mouse.getY() <= 315)
+   		 		{
+   		 			zipcodemachine.number("2");
+   		 		}
+   		 		if (mouse.getX() >= 444 && mouse.getX()<=471 && mouse.getY() >= 291 && mouse.getY() <= 315)
+   		 		{
+   		 			zipcodemachine.number("3");
+   		 		}
+   		 		if (mouse.getX() >= 379 && mouse.getX()<=403 && mouse.getY() >= 327 && mouse.getY() <= 352 )
+   		 		{
+   		 			zipcodemachine.number("4");
+   		 		}
+   		 		if (mouse.getX() >= 411 && mouse.getX()<=437 && mouse.getY() >= 327 && mouse.getY() <= 352)
+   		 		{
+   		 			zipcodemachine.number("5");
+   		 		}
+   		 		if (mouse.getX() >= 444 && mouse.getX()<=471 && mouse.getY() >= 327 && mouse.getY() <= 352)
+   		 		{
+   		 			zipcodemachine.number("6");
+   		 		}
+   		 		if (mouse.getX() >= 379 && mouse.getX()<=403 && mouse.getY() >= 363 && mouse.getY() <= 388)
+   		 		{
+   		 			zipcodemachine.number("7");
+   		 		}
+   		 		if (mouse.getX() >= 411 && mouse.getX()<=437 && mouse.getY() >= 363 && mouse.getY() <= 388)
+   		 		{
+   		 			zipcodemachine.number("8");
+   		 		}
+   		 		if (mouse.getX() >= 444 && mouse.getX()<=471 && mouse.getY() >= 363 && mouse.getY() <= 388)
+   		 		{
+   		 			zipcodemachine.number("9");
+   		 		}
+   		 		if (mouse.getX() >= 411 && mouse.getX()<=437 && mouse.getY() >= 399 && mouse.getY() <= 424)
+   		 		{
+   		 			zipcodemachine.number("0");
+   		 		}
+   		 		if (mouse.getX() >= 485 && mouse.getX()<=514 && mouse.getY() >= 327 && mouse.getY() <= 352)
+   		 		{
+   		 			zipcodemachine.backspace();
+   		 		}
+   		 		if (mouse.getX() >= 485 && mouse.getX()<=514 && mouse.getY() >= 291 && mouse.getY() <= 315)
+   		 		{
+   		 			zipcodemachine.cancel();
+   		 		}
+   		 		if (mouse.getX() >= 485 && mouse.getX()<=514 && mouse.getY() >= 363 && mouse.getY() <= 388)
+   		 		{
+   		 			zipcodemachine.enter();
+   		 			if(zipcodemachine.validZipcode() ) {
+   		 				go.act1();
+   		 			}
+   		 		}
+   		 	}
+        }
+   	 
+   		 
     }
 
     @Override

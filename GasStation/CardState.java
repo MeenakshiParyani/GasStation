@@ -4,5 +4,5 @@ public interface CardState {
 
     void insertCard();
     void ejectCard();
-    void insertPin(int pinEntered);
+    void insertPin();
 }
