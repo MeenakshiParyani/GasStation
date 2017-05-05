@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import  java.awt.Font;
+import java.util.List;
 
 /**
  * Write a description of class PrintReceipt here.
@@ -10,10 +11,7 @@ import  java.awt.Font;
 public class PrintReceipt extends Screen implements IDisplayComponent
 {
 	private World world;
-	public static double reguarUnleaded = 2.49;
-	public static double midUnleaded = 3.14;
-	public static double premiumUnleaded = 4.29;
-
+	private static double carWashPrice = 40.0;
 
 	public PrintReceipt(World world) {
 		this.world = world;
@@ -29,33 +27,36 @@ public class PrintReceipt extends Screen implements IDisplayComponent
 		// Add your action code here.
 	}
 
-	public void display() {
-		this.world.addObject(this, 350, 410);
+	/*public void display() {
+		//this.world.addObject(this, 350, 410);
+		GreenfootImage txt = new GreenfootImage(900,60);
+		txt.setColor(Color.RED);
+		txt.fill();
+		txt.drawString(message.toString(), 550, 60);
+		setImage(txt);
+
+		List<GasStation> gs = this.world.getObjects(GasStation.class);
+		GasStation g = gs.get(0);
+		g.ok = false;
+	}*/
+
+	public  void printReciept( boolean fuel, double gallons, boolean carWash, FuelType fuelType, List<DiscountType> discountTypes) {
+
+		double totalPrice = 0.0;
+		double carWashPrice = 0.0;
+		//Calculate price based on fuel type
+		double fuelPrice = gallons * fuelType.getPrice();
+		// Give discounts based on card type
+		for(DiscountType discountType : discountTypes){
+			carWashPrice = PrintReceipt.carWashPrice * discountType.getDiscountPercent();
+		}
+		totalPrice = carWashPrice + fuelPrice;
+		
+		Receipt receipt = new Receipt(fuel, fuelType, gallons, fuelPrice, carWash, carWashPrice, totalPrice);
+		System.out.println(receipt.generateReceipt());
+
 	}
 
-	public  void calculateReceipt(double gallons, boolean carWash, int gasType) {
-
-		double finalPrice = 0.0;
-
-		switch(gasType){
-		case 87: finalPrice = gallons*reguarUnleaded;break;
-		case 89: finalPrice = gallons*midUnleaded;break;
-		case 91: finalPrice = gallons*premiumUnleaded; break;
-		default: finalPrice = gallons*reguarUnleaded;
-		}
-
-		if(carWash==true){
-			double discount = 10.0;
-			finalPrice=finalPrice - discount*finalPrice; 		
-		}
-
-
-		System.out.println(finalPrice);
-
-		Receipt r = new Receipt(getWorld());
-		r.display();
-
-	}
 }
 
 
