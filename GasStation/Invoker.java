@@ -1,6 +1,13 @@
 
-public interface Invoker {
+public class Invoker {
 
-	public void setCommand(Command cmd);
-	public void invoke();
+	private Command cmnd;
+	
+	public Invoker(Command cmnd) {
+		this.cmnd = cmnd;
+	}
+	
+	public void execute() {
+		this.cmnd.execute();
+	}
 }
