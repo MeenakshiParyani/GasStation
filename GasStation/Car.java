@@ -27,8 +27,10 @@ public class Car extends Screen implements IDisplayComponent
 		public void display() {
 			// TODO Auto-generated method stub
 			//int x = 100;
+			world.addObject((Actor) this, 100, 500);
 			for (IDisplayComponent car : cars) {
-				world.addObject((Actor) car, 100, 500);
+				
+				car.display();
 				//x += 100;
 			}
 		}
