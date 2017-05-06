@@ -14,14 +14,18 @@ public class CardScanner extends Screen implements IDisplayComponent
     boolean f = true;
     ZipcodeMachine zipcodemachine;
     boolean flag = true;
-    GasOptions go;
-    
+    GasOptions go = null;
+    Receiver r = null;
+    CancelCommand cc = null;
+    Invoker in = null;
     
     public CardScanner(World world) {
         this.world = world;
         this.cardmachine = new CardMachine();
         this.zipcodemachine = new ZipcodeMachine();
         this.go = new GasOptions(world);
+        this.r  = new CreditReceiver();
+        
     }
 
     /**
@@ -30,8 +34,17 @@ public class CardScanner extends Screen implements IDisplayComponent
      */
     public void act() 
     {
+    	Display d  =getWorld().getObjects(Display.class).get(0);
+    	
+    	d.clearScreen();
+    	d.setText("Cancel");
+    	d.setText("Help");
+    	
+    	
         if (getOneIntersectingObject(Card.class) != null)
         {
+        	
+        	
             c = (Card)getOneIntersectingObject(Card.class);
             
          
@@ -79,7 +92,10 @@ public class CardScanner extends Screen implements IDisplayComponent
         }
                 
         MouseInfo mouse = Greenfoot.getMouseInfo();
-   	 if (Greenfoot.mouseClicked(null) && ((!flag) && cardmachine.cardState.getClass().getCanonicalName() == cardmachine.hasCorrectPin.getClass().getCanonicalName()))
+   	 if (Greenfoot.mouseClicked(null) )
+   			 {
+   		 
+   			 if ((mouse != null) && (!flag) && cardmachine.cardState.getClass().getCanonicalName() == cardmachine.hasCorrectPin.getClass().getCanonicalName())
         {
    		//System.out.println("After" );
    		 	if (mouse.getX() >= 370 && mouse.getX()<=525 && mouse.getY() >= 280 && mouse.getY() <= 450)
@@ -142,7 +158,20 @@ public class CardScanner extends Screen implements IDisplayComponent
    		 		}
    		 	}
         }
-   	 
+   			 
+   			 if (mouse != null && mouse.getX() >= 569 && mouse.getX()<=584 && mouse.getY() >= 208 && mouse.getY() <= 225)
+   			 {
+   				 System.out.println("Cancel");
+   				 this.cc = new CancelCommand(r);
+   				 in = new Invoker(cc);
+   				 in.execute();
+   				 
+   			 }
+   			if (mouse != null && mouse.getX() >= 319 && mouse.getX()<=333 && mouse.getY() >= 121 && mouse.getY() <= 136)
+  			 {
+  				 System.out.println("Help");
+  			 }
+   			 }
    		 
     }
 

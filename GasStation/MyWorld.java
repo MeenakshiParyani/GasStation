@@ -20,6 +20,7 @@ public class MyWorld extends World
 
 	public void prepare() {
 
+
 		Card card = new Card(this);
 		GasStation gasStation = new GasStation(this);
 		PumpNozel pumpNozel = new PumpNozel(this);
@@ -41,11 +42,11 @@ public class MyWorld extends World
 		PrintReceipt printer = new PrintReceipt(this);
 		CardScanner scanner = new CardScanner(this);
 		Buttons buttons = new Buttons(this);
-		Display messages = new Display(this);
+		//Display messages = new Display(this);
 		GasOptions fuelType =new GasOptions(this);
 
 		//composite pattern for all gas station components
-		gasStation.addSubComponent(messages);
+		//gasStation.addSubComponent(messages);
 		gasStation.addSubComponent(scanner);
 		gasStation.addSubComponent(printer);
 		gasStation.addSubComponent(buttons);
@@ -67,6 +68,7 @@ public class MyWorld extends World
 		//     This should be called when customer asks for a car wash from the respective class
 		//      Greenfoot.setWorld(new CarWashWorld());
 	}
+
 
 
 }

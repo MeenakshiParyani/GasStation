@@ -14,6 +14,7 @@ public class Display extends Screen implements IDisplayComponent
     public Display(World world) 
     {
     	this.world = world;
+
    	
 		gi = new GreenfootImage(189,142); 
 		giReceipt = new GreenfootImage(250,300);
@@ -23,10 +24,15 @@ public class Display extends Screen implements IDisplayComponent
               
 	}
   
+    public void clearScreen()
+    {
+    	gi.clear();
+    }
 
     public void setText(String msg)
     {
     //	gi.clear();
+
     	GreenfootImage inner= new GreenfootImage(msg, 19, Color.YELLOW, new Color(0, 0, 0, 96));
     	 int wide = gi.getWidth();
 	     int high = gi.getHeight();
@@ -34,41 +40,40 @@ public class Display extends Screen implements IDisplayComponent
 	     int topY = (high - inner.getHeight())/2;
 	     
         gi.setColor(greenfoot.Color.BLACK);
-        gi.setFont(gi.getFont().deriveFont(17f));
+        gi.setFont(gi.getFont().deriveFont(14f));
     	
     	if(msg=="OK")
     	{
 //    		 gi.drawString(msg,165,100);
 //    	        setImage(gi);
-    		gi.drawImage(inner, 165, 85);
+    		gi.drawImage(inner, 170, 85);
 	        setImage(gi);
     	}
     	else if(msg=="Cancel")
     	{
 //    		 gi.drawString(msg,138,125);
 //    	        setImage(gi);
-    	        gi.drawImage(inner, 138, 110);
+    	        gi.drawImage(inner, 140, 110);
     	        setImage(gi);
     	}
     	else if(msg=="Yes")
-    	{
-//    		 gi.drawString(msg,5,100);
+    	{//    		 gi.drawString(msg,5,100);
 //    	        setImage(gi);
-    		gi.drawImage(inner, 5, 85);
+    		gi.drawImage(inner, 2, 85);
 	        setImage(gi);
     	}
     	else if(msg=="No")
     	{
 //    		 gi.drawString(msg,5,125);
 //    	        setImage(gi);
-    		gi.drawImage(inner, 5, 110);
+    		gi.drawImage(inner, 2, 110);
 	        setImage(gi);
     	}
       
     	else if(msg=="Help")
     	{
     
-    		gi.drawImage(inner, 5, 25);
+    		gi.drawImage(inner, 2, 25);
 	        setImage(gi);
 	       
 //    		 gi.drawString(msg,5,40);
@@ -105,6 +110,7 @@ public class Display extends Screen implements IDisplayComponent
     @Override
 	public void display() {
 		// TODO Auto-generated method stub
+
     	this.world.addObject(this, 448, 168);
 	}
 	/**
@@ -114,6 +120,7 @@ public class Display extends Screen implements IDisplayComponent
     public void act()
     {
         // Add your action code here.
+
 //     	MouseInfo mouse = Greenfoot.getMouseInfo();
 //     	 if (Greenfoot.mouseClicked(null))
 //          {
