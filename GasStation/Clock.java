@@ -12,6 +12,7 @@ public class Clock extends Actor
 {
 
 	public double gallons = 0;
+	public double cost = 0;
 
 	private long lastCurrentSecond;
 	private long timeSaved = 0;
@@ -24,7 +25,7 @@ public class Clock extends Actor
 	
 	
 	public Clock() {
-		gi = new GreenfootImage(189,142);
+		gi = new GreenfootImage(100,40);
 	}
 
 
@@ -34,8 +35,8 @@ public class Clock extends Actor
 		gi.setColor(greenfoot.Color.YELLOW);
 		gi.fill();
 		gi.setColor(greenfoot.Color.BLACK);
-		gi.setFont(gi.getFont().deriveFont(30f)); 
-		gi.drawString(msg,10,50);
+		gi.setFont(gi.getFont().deriveFont(10f)); 
+		gi.drawString(msg,10,10);
 
 	}
 
@@ -55,9 +56,17 @@ public class Clock extends Actor
 				this.gallonsDone = "Tank Full \n Put Back Nozzle in Holder";
 			}
 			else if ((System.currentTimeMillis() - lastCurrentSecond >= 100)) {
-				lastCurrentSecond += 100;
-				gallons = gallons + 0.01;
-				this.gallonsDone = "gallons "+ new DecimalFormat(("00.00")).format(gallons);
+                lastCurrentSecond += 100;
+		gallons = gallons + 0.01;
+		PumpNozel p = getWorld().getObjects(PumpNozel.class).get(0);
+		if(p.fuelType == 87) {
+			cost = gallons * FuelType.REGULAR_UNLEADED.getPrice();
+		} else if(p.fuelType == 89) {
+			cost = gallons * FuelType.MID_UNLEADED.getPrice();
+		} else if(p.fuelType == 93) {
+			cost = gallons * FuelType.PREMIUM_UNLEADED.getPrice();
+		}
+		this.gallonsDone = "gallons "+ new DecimalFormat(("00.00")).format(gallons) + "\n" + "cost "+ new DecimalFormat(("00.00")).format(cost);
 			}
 		}
 	}

@@ -23,7 +23,7 @@ public class MyWorld extends World
 
 		Card card = new Card(this);
 		GasStation gasStation = new GasStation(this);
-		PumpNozel pumpNozel = new PumpNozel(this);
+		
 		NozzleHolder nozzleHolder = new NozzleHolder(this);
 
 		Car car = new Car(this);
@@ -57,10 +57,12 @@ public class MyWorld extends World
 		screen.addSubComponent(gasStation);
 		//      screen.addSubComponent(carWashArea);
 		screen.addSubComponent(card);
+		screen.addSubComponent(display);
+		PumpNozel pumpNozel = new PumpNozel(this);
 		screen.addSubComponent(pumpNozel);
 		screen.addSubComponent(nozzleHolder);
 		screen.addSubComponent(car);
-		screen.addSubComponent(display);
+		
 
 
 		addObject(screen, 50, 50);

@@ -14,16 +14,15 @@ public class CardScanner extends Screen implements IDisplayComponent
     boolean f = true;
     ZipcodeMachine zipcodemachine;
     boolean flag = true;
-    GasOptions go = null;
     Receiver r = null;
     CancelCommand cc = null;
     Invoker in = null;
+    boolean disp_screen= true;
     
     public CardScanner(World world) {
         this.world = world;
         this.cardmachine = new CardMachine();
         this.zipcodemachine = new ZipcodeMachine();
-        this.go = new GasOptions(world);
         this.r  = new CreditReceiver();
         
     }
@@ -34,13 +33,12 @@ public class CardScanner extends Screen implements IDisplayComponent
      */
     public void act() 
     {
-    	Display d  =getWorld().getObjects(Display.class).get(0);
+
     	
-    	d.clearScreen();
-    	d.setText("Cancel");
-    	d.setText("Help");
-    	
-    	
+    	if (disp_screen)
+    	{
+    		display_screen();
+    	}
         if (getOneIntersectingObject(Card.class) != null)
         {
         	
@@ -153,7 +151,9 @@ public class CardScanner extends Screen implements IDisplayComponent
    		 		{
    		 			zipcodemachine.enter();
    		 			if(zipcodemachine.validZipcode() ) {
-   		 				go.act1();
+   		 				getWorld().getObjects(GasOptions.class).get(0).setCard(c);
+   		 				getWorld().getObjects(GasOptions.class).get(0).act1();
+   		 				
    		 			}
    		 		}
    		 	}
@@ -175,7 +175,17 @@ public class CardScanner extends Screen implements IDisplayComponent
    		 
     }
 
-    @Override
+    private void display_screen() {
+		// TODO Auto-generated method stub
+    	Display d  =getWorld().getObjects(Display.class).get(0);
+    	
+    	d.clear();
+    	d.setText("Help");
+    	d.setText("Cancel");
+    	disp_screen = false;
+	}
+
+	@Override
     public void display() {
         world.addObject(this, 550, 380);
     }

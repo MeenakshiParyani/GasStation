@@ -9,6 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class GasOptions extends Screen implements IDisplayComponent
 {
 	private World world;
+	private Card c;
+	
+	
 	
 	public GasOptions(World world) {
 		this.world = world;
@@ -48,4 +51,17 @@ public class GasOptions extends Screen implements IDisplayComponent
     public void display() {
     	world.addObject(this, 725, 400);
     }
+
+    public Card  getCard()
+    {
+    	return this.c;
+    }
+    
+	public void setCard(Card c) {
+		// TODO Auto-generated method stub
+		this.c =c;
+		System.out.println("c" + c);
+	}
+
+	
 }

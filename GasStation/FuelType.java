@@ -1,7 +1,7 @@
 
 public enum FuelType {
 	
-	REGULAR_UNLEADED("Regular Unleaded", 2.49), 
+	REGULAR_UNLEADED("Regular Unleaded", 2.8), 
 	MID_UNLEADED("Mid Unleaded", 3.14), 
 	PREMIUM_UNLEADED("Premium Unleaded", 4.29);
 	

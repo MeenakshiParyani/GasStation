@@ -24,10 +24,6 @@ public class Display extends Screen implements IDisplayComponent
               
 	}
   
-    public void clearScreen()
-    {
-    	gi.clear();
-    }
 
     public void setText(String msg)
     {
@@ -40,7 +36,7 @@ public class Display extends Screen implements IDisplayComponent
 	     int topY = (high - inner.getHeight())/2;
 	     
         gi.setColor(greenfoot.Color.BLACK);
-        gi.setFont(gi.getFont().deriveFont(14f));
+        gi.setFont(gi.getFont().deriveFont(8f));
     	
     	if(msg=="OK")
     	{
@@ -81,7 +77,7 @@ public class Display extends Screen implements IDisplayComponent
     	}
     	else
     	{
-
+    		gi.setFont(gi.getFont().deriveFont(10f));
     	        gi.drawImage(inner, leftX, topY);
     	        setImage(gi);
     	       
@@ -102,7 +98,7 @@ public class Display extends Screen implements IDisplayComponent
         gi.setColor(greenfoot.Color.WHITE);
         gi.fill();
         gi.setColor(greenfoot.Color.BLACK);
-        gi.setFont(gi.getFont().deriveFont(17f));
+        gi.setFont(gi.getFont().deriveFont(12f));
         gi.drawString(msg,15,40);
 		setImage(gi);
     }
@@ -121,11 +117,11 @@ public class Display extends Screen implements IDisplayComponent
     {
         // Add your action code here.
 
-//     	MouseInfo mouse = Greenfoot.getMouseInfo();
-//     	 if (Greenfoot.mouseClicked(null))
-//          {
-//          	System.out.println("x "+mouse.getX()+" y: "+mouse.getY());
-//          }
+     	/*MouseInfo mouse = Greenfoot.getMouseInfo();
+     	 if (Greenfoot.mouseClicked(null))
+          {
+          	System.out.println("x "+mouse.getX()+" y: "+mouse.getY());
+          }*/
 //    	if(Greenfoot.mousePressed(this))
 //        {
 //            World world = getWorld();
