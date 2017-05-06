@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -9,6 +11,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class PumpNozel extends Screen implements IDisplayComponent
 {	
 	private World world;
+	Clock c = new Clock();
+	public boolean draw = false;
+
 	
 	public PumpNozel(World world) {
 		this.world = world;
@@ -24,44 +29,29 @@ public class PumpNozel extends Screen implements IDisplayComponent
     	
     	int mouseX, mouseY;
     	   
-        // this becomes true when the object is clicked and draggged using mouse
-        
+     
         if(Greenfoot.mouseDragged(this))  
         {
-        	System.out.println("dragging");
+        	//System.out.println("dragging");
             MouseInfo mouse = Greenfoot.getMouseInfo();
             mouseX=mouse.getX();
             mouseY=mouse.getY();
             setLocation(mouseX, mouseY);
         }
+    	Actor pumpNozel = getOneIntersectingObject(Car.class);
+    	if(pumpNozel!=null && draw==true){
+    		c.drawGas();
+    	}
         
-       // dispenseGas();
+        this.getWorld().addObject(c, 448, 168);
+        
+        
+        System.out.println(new DecimalFormat(("00.00")).format(c.gallons));
 
-        
     }
     
 	public void display() {
 		world.addObject((Actor) this, 800, 150);
 	}
-    
-    public void dispenseGas(){
-    	
-    	Actor pumpNozel = getOneObjectAtOffset(0, 0, Car.class);
-    	System.out.println(pumpNozel);
-		Clock c = new Clock();
-    	if(pumpNozel==null){
-    		System.out.println("entered");
-    		c.drawGas = true;
-
-    	}
-    	else{
-    		c.drawGas = false;
-    	}
-
-
-        this.getWorld().addObject(c, 448, 168);
-
-    	
-    }
-    
+ 
 }
