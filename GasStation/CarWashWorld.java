@@ -38,7 +38,7 @@ public class CarWashWorld extends World
 
     	// composite pattern for screen
     	screen.addSubComponent(carWashArea);
-    	screen.addSubComponent(car);
+    	screen.addSubComponent(dirtyCar);
     	
     	addObject(screen, 30, 50);
     }
