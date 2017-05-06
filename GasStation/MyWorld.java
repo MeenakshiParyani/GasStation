@@ -8,62 +8,65 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
 	/**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
-    public MyWorld()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1000 , 600, 1);
-        prepare();
-    }
-    
-    public void prepare() {
+	 * Constructor for objects of class MyWorld.
+	 * 
+	 */
+	public MyWorld()
+	{    
+		// Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+		super(1000 , 600, 1);
+		prepare();
+	}
 
-        Card card = new Card(this);
-        GasStation gasStation = new GasStation(this);
-        PumpNozel pumpNozel = new PumpNozel(this);
-        Car car = new Car(this);
-    //    CarWashArea carWashArea = new CarWashArea(this);
-        Screen screen = new Screen();
+	public void prepare() {
 
-        DiscoverCC discoverCreditCard = new DiscoverCC(this);
-        ChaseCC chaseCreditCard = new ChaseCC(this);
-        FakeCC fakeCreditCard = new FakeCC(this);
-	Display display = new Display(this);
-        // composite pattern for all card objects
-        card.addSubComponent(discoverCreditCard);
-        card.addSubComponent(chaseCreditCard);
-        card.addSubComponent(fakeCreditCard);
+		Card card = new Card(this);
+		GasStation gasStation = new GasStation(this);
+		PumpNozel pumpNozel = new PumpNozel(this);
+		NozzleHolder nozzleHolder = new NozzleHolder(this);
 
-        PrintReceipt printer = new PrintReceipt(this);
-        CardScanner scanner = new CardScanner(this);
-        Buttons buttons = new Buttons(this);
-        Display messages = new Display(this);
-        GasOptions fuelType =new GasOptions(this);
+		Car car = new Car(this);
+		//    CarWashArea carWashArea = new CarWashArea(this);
+		Screen screen = new Screen();
 
-        //composite pattern for all gas station components
-        gasStation.addSubComponent(messages);
-        gasStation.addSubComponent(scanner);
-        gasStation.addSubComponent(printer);
-        gasStation.addSubComponent(buttons);
-        gasStation.addSubComponent(fuelType);
+		DiscoverCC discoverCreditCard = new DiscoverCC(this);
+		ChaseCC chaseCreditCard = new ChaseCC(this);
+		FakeCC fakeCreditCard = new FakeCC(this);
+		Display display = new Display(this);
+		// composite pattern for all card objects
+		card.addSubComponent(discoverCreditCard);
+		card.addSubComponent(chaseCreditCard);
+		card.addSubComponent(fakeCreditCard);
 
-        //composite pattern for the whole screen        
+		PrintReceipt printer = new PrintReceipt(this);
+		CardScanner scanner = new CardScanner(this);
+		Buttons buttons = new Buttons(this);
+		Display messages = new Display(this);
+		GasOptions fuelType =new GasOptions(this);
 
-        screen.addSubComponent(gasStation);
-  //      screen.addSubComponent(carWashArea);
-        screen.addSubComponent(card);
-        screen.addSubComponent(pumpNozel);
-        screen.addSubComponent(car);
-        screen.addSubComponent(display);
-        
+		//composite pattern for all gas station components
+		gasStation.addSubComponent(messages);
+		gasStation.addSubComponent(scanner);
+		gasStation.addSubComponent(printer);
+		gasStation.addSubComponent(buttons);
+		gasStation.addSubComponent(fuelType);
 
-        addObject(screen, 50, 50);
-       
-  //     This should be called when customer asks for a car wash from the respective class
-  //      Greenfoot.setWorld(new CarWashWorld());
-    }
-    
-    
+		//composite pattern for the whole screen        
+
+		screen.addSubComponent(gasStation);
+		//      screen.addSubComponent(carWashArea);
+		screen.addSubComponent(card);
+		screen.addSubComponent(pumpNozel);
+		screen.addSubComponent(nozzleHolder);
+		screen.addSubComponent(car);
+		screen.addSubComponent(display);
+
+
+		addObject(screen, 50, 50);
+
+		//     This should be called when customer asks for a car wash from the respective class
+		//      Greenfoot.setWorld(new CarWashWorld());
+	}
+
+
 }
