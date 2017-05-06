@@ -91,8 +91,8 @@ public class PrintReceipt extends Screen implements IDisplayComponent
 		Display d = getWorld().getObjects(Display.class).get(0);
         Display display = new Display(getWorld());
         getWorld().addObject(display, 100, 400);
-        display.setText(200, 250, message.toString());
-        System.out.println(message.toString());
+        display.setText(200, 275, message.toString());
+        //System.out.println(message.toString());
         playReceiptSoundInBackground();
         d.clear();
         d.setText("Thank You!");
