@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import  java.awt.Font;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +19,12 @@ public class PrintReceipt extends Screen implements IDisplayComponent
 		this.world = world;
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public void display() {
+		// TODO Auto-generated method stub
+		world.addObject((Actor) this, 350, 410);
+	}
 
 	/**
 	 * Act - do whatever the PrintReceipt wants to do. This method is called whenever
@@ -24,7 +32,14 @@ public class PrintReceipt extends Screen implements IDisplayComponent
 	 */
 	public void act() 
 	{
-		// Add your action code here.
+        if(Greenfoot.mouseClicked(null)){
+        	List<DiscountType> discountTypes = new ArrayList<DiscountType>();
+            discountTypes.add(DiscountType.DISCOVER_CC);
+            discountTypes.add(DiscountType.CAR_DISCOUNT);
+            PrintReceipt printer = (PrintReceipt)(world.getObjects(PrintReceipt.class).get(0));
+            printer.printReciept(true, 5, true, FuelType.PREMIUM_UNLEADED, discountTypes);
+        }
+		
 	}
 
 	/*public void display() {
@@ -48,12 +63,24 @@ public class PrintReceipt extends Screen implements IDisplayComponent
 		double fuelPrice = gallons * fuelType.getPrice();
 		// Give discounts based on card type
 		for(DiscountType discountType : discountTypes){
-			carWashPrice = PrintReceipt.carWashPrice * discountType.getDiscountPercent();
+			if(discountType.equals(DiscountType.CAR_DISCOUNT))
+				carWashPrice = this.carWashPrice - this.carWashPrice * discountType.getDiscountPercent();
+			else
+				fuelPrice = fuelPrice - fuelPrice * discountType.getDiscountPercent();
 		}
 		totalPrice = carWashPrice + fuelPrice;
-		
-		Receipt receipt = new Receipt(fuel, fuelType, gallons, fuelPrice, carWash, carWashPrice, totalPrice);
+		String fPrice = new DecimalFormat("#.##").format(fuelPrice);
+		String cwPrice = new DecimalFormat("#.##").format(carWashPrice);
+		String tPrice = new DecimalFormat("#.##").format(totalPrice);
+		Receipt receipt = new Receipt(fuel, fuelType, fPrice, carWash, cwPrice, tPrice);
 		System.out.println(receipt.generateReceipt());
+		
+		int mouseX, mouseY;
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        mouseX = mouse.getX();
+        mouseY = mouse.getY();
+        Display display = new Display(getWorld());
+        display.setText(mouseX, mouseY, receipt.generateReceipt());
 
 	}
 

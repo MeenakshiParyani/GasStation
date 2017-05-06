@@ -1,10 +1,8 @@
-import java.nio.channels.GatheringByteChannel;
-import java.util.List;
-
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+// (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.GreenfootSound;
 
 /**
- * Write a description of class Receipt here.
+ * Write a description of class Receipt here.	
  * 
  * @author Meenakshi
  * @version (a version number or a date)
@@ -13,20 +11,18 @@ public class Receipt
 {
 	private boolean fuel;
 	private FuelType fuelType;
-	private double gallons;
-	private double fuelPrice;
+	private String fuelPrice;
 	private boolean carWash;
-	private double carPrice;
-	private double carWashPrice;
-	private double totalPrice;
+	private String carWashPrice;
+	private String totalPrice;
 	/**
 	 * Act - do whatever the Card wants to do. This method is called whenever
 	 * the 'Act' or 'Run' button gets pressed in the environment.
 	 */
-	public Receipt(boolean fuel, FuelType fuelType, double gallons, double fuelPrice, boolean carWash, double carWashPrice, double totalPrice) {
+	public Receipt(boolean fuel, FuelType fuelType, String fuelPrice, boolean carWash, String carWashPrice, String totalPrice) {
 
 		this.fuel = fuel;
-		this.gallons = gallons;
+		this.fuelType = fuelType;
 		this.fuelPrice = fuelPrice;
 		this.carWash = carWash;
 		this.carWashPrice = carWashPrice;
@@ -45,15 +41,14 @@ public class Receipt
 
 		playReceiptSoundInBackground();
 		StringBuilder message = new StringBuilder("Welcome to Stallions Gas Station!");
-		message.append("-------------------------------------");
-		message.append("\n 1 WASHINGTON STREET\nSAN JOSE\nCA 95112\n");
+		message.append("\n1 WASHINGTON STREET SAN JOSE CA 95112\n");
 		message.append("-------------------------------------\n");
 		if(fuel)
-			message.append(fuelType + "           " + fuelPrice);
+			message.append(fuelType.getLabel() + "           " + fuelPrice);
 		if(carWash)
-			message.append("\nCar Wash" + "           " + carWashPrice);
-		message.append("-------------------------------------\n");
-		message.append("Subtotal" + "           " + totalPrice);
+			message.append("\nCar Wash" + "                   " + carWashPrice);
+		message.append("\n-------------------------------------\n");
+		message.append("Subtotal" + "                   " + totalPrice);
 		return message.toString();
 	}
 
