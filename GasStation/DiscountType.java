@@ -9,7 +9,7 @@
 public enum DiscountType {
 	
 	CHASE_CC(0.02),
-	DISCOVER_CC(0.05),
+	DISCOVER_CC(0.00),
 	CAR_DISCOUNT(0.03);
 	
 	private double discountPercent;
