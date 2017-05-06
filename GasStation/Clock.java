@@ -16,7 +16,8 @@ public class Clock extends Actor
 	private long lastCurrentSecond;
 	private long timeSaved = 0;
 
-	public boolean drawGas = false;
+	public boolean fuellingDone = false;
+	public boolean fuellingStart = false;
 	public boolean tankFull = false;
 	GreenfootImage gi ;
 	String gallonsDone = "gallons";
@@ -47,14 +48,11 @@ public class Clock extends Actor
 	
 	public void drawGas(){
 		setImage(gi);
-		
-		
-
 		if (!tankFull) {
 			if (gallons>18.00) {
 				tankFull = true;
-				stopClock();
-				this.gallonsDone = "Tank Full ";
+				stopDispense();
+				this.gallonsDone = "Tank Full \n Put Back Nozzle in Holder";
 			}
 			else if ((System.currentTimeMillis() - lastCurrentSecond >= 100)) {
 				lastCurrentSecond += 100;
@@ -99,13 +97,13 @@ public class Clock extends Actor
 
 	public void startClock() {
 
-		System.out.println("dispense started");
+		//System.out.println("dispense started");
 		lastCurrentSecond = System.currentTimeMillis() - timeSaved;
 		//drawGas = true;
 	}
-	public void stopClock() {
+	public void stopDispense() {
 		timeSaved = System.currentTimeMillis() - lastCurrentSecond;
-		//drawGas = false;
+		fuellingDone = true;
 	}
 	public void resetClock() {
 		//gallons = -0.1;
