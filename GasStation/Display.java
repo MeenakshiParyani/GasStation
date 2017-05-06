@@ -17,18 +17,12 @@ public class Display extends Screen implements IDisplayComponent
 
    	
 		gi = new GreenfootImage(189,142); 
-		giReceipt = new GreenfootImage(250,300);
-//		gi.setColor(greenfoot.Color.BLUE);
-//       gi.fill();
-//        setImage(gi);
-              
 	}
   
 
     public void setText(String msg)
     {
-    //	gi.clear();
-
+  
     	GreenfootImage inner= new GreenfootImage(msg, 19, Color.YELLOW, new Color(0, 0, 0, 96));
     	 int wide = gi.getWidth();
 	     int high = gi.getHeight();
@@ -40,28 +34,20 @@ public class Display extends Screen implements IDisplayComponent
     	
     	if(msg=="OK")
     	{
-//    		 gi.drawString(msg,165,100);
-//    	        setImage(gi);
     		gi.drawImage(inner, 170, 85);
 	        setImage(gi);
     	}
     	else if(msg=="Cancel")
     	{
-//    		 gi.drawString(msg,138,125);
-//    	        setImage(gi);
     	        gi.drawImage(inner, 140, 110);
     	        setImage(gi);
     	}
     	else if(msg=="Yes")
-    	{//    		 gi.drawString(msg,5,100);
-//    	        setImage(gi);
-    		gi.drawImage(inner, 2, 85);
+    	{	gi.drawImage(inner, 2, 85);
 	        setImage(gi);
     	}
     	else if(msg=="No")
     	{
-//    		 gi.drawString(msg,5,125);
-//    	        setImage(gi);
     		gi.drawImage(inner, 2, 110);
 	        setImage(gi);
     	}
@@ -72,8 +58,6 @@ public class Display extends Screen implements IDisplayComponent
     		gi.drawImage(inner, 2, 25);
 	        setImage(gi);
 	       
-//    		 gi.drawString(msg,5,40);
-//    	        setImage(gi);
     	}
     	else
     	{
@@ -102,13 +86,18 @@ public class Display extends Screen implements IDisplayComponent
     public void setText(int x, int y,String msg)
     {
     	giReceipt = new GreenfootImage(x,y);
-    	gi.clear();
-        gi.setColor(greenfoot.Color.WHITE);
-        gi.fill();
-        gi.setColor(greenfoot.Color.BLACK);
-        gi.setFont(gi.getFont().deriveFont(12f));
-        gi.drawString(msg,15,40);
-		setImage(gi);
+    	giReceipt.clear();
+    	giReceipt.setColor(greenfoot.Color.GRAY);
+    	giReceipt.fill();
+    	giReceipt.setColor(greenfoot.Color.BLACK);
+    	giReceipt.setFont(giReceipt.getFont().deriveFont(12f));
+    	giReceipt.drawString(msg,15,20);
+		setImage(giReceipt);
+        try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
     }
     
     @Override
@@ -130,10 +119,5 @@ public class Display extends Screen implements IDisplayComponent
           {
           	System.out.println("x "+mouse.getX()+" y: "+mouse.getY());
           }*/
-//    	if(Greenfoot.mousePressed(this))
-//        {
-//            World world = getWorld();
-//            world.removeObject(this);
-//        }
     }    
 }

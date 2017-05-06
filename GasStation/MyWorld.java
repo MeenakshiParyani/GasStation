@@ -43,10 +43,11 @@ public class MyWorld extends World
 		//      screen.addSubComponent(carWashArea);
 		screen.addSubComponent(card);
 		screen.addSubComponent(display);
+		screen.addSubComponent(car);
 		PumpNozel pumpNozel = new PumpNozel(this);
 		screen.addSubComponent(pumpNozel);
 		screen.addSubComponent(nozzleHolder);
-		screen.addSubComponent(car);
+		
 
 
 		PrintReceipt printer = new PrintReceipt(this);

@@ -27,7 +27,7 @@ public class Car extends Screen implements IDisplayComponent
 		public void display() {
 			// TODO Auto-generated method stub
 			//int x = 100;
-			world.addObject((Actor) this, 100, 500);
+			world.addObject((Actor) this, 100, 520);
 			for (IDisplayComponent car : cars) {
 				
 				car.display();
@@ -39,6 +39,19 @@ public class Car extends Screen implements IDisplayComponent
 
     public void act() {
         // Add your action code here.
+    	MouseInfo mouse = Greenfoot.getMouseInfo();
+    	if(getWorld().getObjects(Car.class).get(0).getX() <= 500) {
+    		Greenfoot.playSound("sounds/car+driveby21.wav");
+    		move(2);
+    	}
+    }
+    
+    public void moveCar() {
+    	if(getWorld().getObjects(Car.class).get(0).getX() <= 1000) {
+    		Greenfoot.playSound("sounds/car+driveby21.wav");
+    		move(2);
+    	}
+    	//Greenfoot.setWorld(new MyWorld());
     }
 
 	@Override

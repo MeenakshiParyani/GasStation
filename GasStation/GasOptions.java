@@ -27,6 +27,7 @@ public class GasOptions extends Screen implements IDisplayComponent
         // Add your action code here.
     	MouseInfo mouse = Greenfoot.getMouseInfo();
     	if(Greenfoot.mouseClicked(null) && mouse != null) {
+    		Greenfoot.playSound("sounds/a.wav");
     		if(mouse.getX() >= 650 && mouse.getX() <= 800 && mouse.getY() >= 350 && mouse.getY() <= 450) {
     			act1();
     		}

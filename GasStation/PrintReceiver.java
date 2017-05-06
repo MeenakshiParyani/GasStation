@@ -1,3 +1,5 @@
+import greenfoot.Greenfoot;
+
 public class PrintReceiver implements Receiver {
 
 	Display d = null;
@@ -42,6 +44,7 @@ public class PrintReceiver implements Receiver {
 		// TODO Auto-generated method stub
 		d.clear();
     	d.setText("ThankYou!");
+    	Greenfoot.setWorld(new MyWorld());
 		
 	}
 

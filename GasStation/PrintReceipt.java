@@ -32,34 +32,16 @@ public class PrintReceipt extends Screen implements IDisplayComponent
 	 */
 	public void act() 
 	{
-       /* if(Greenfoot.mouseClicked(null)){
-        	List<DiscountType> discountTypes = new ArrayList<DiscountType>();
-            discountTypes.add(DiscountType.DISCOVER_CC);
-            discountTypes.add(DiscountType.CAR_DISCOUNT);
-            PrintReceipt printer = (PrintReceipt)(world.getObjects(PrintReceipt.class).get(0));
-            printer.printReciept(true, 5, true, FuelType.PREMIUM_UNLEADED, discountTypes);
-        }*/
 		
 	}
-
-	/*public void display() {
-		//this.world.addObject(this, 350, 410);
-		GreenfootImage txt = new GreenfootImage(900,60);
-		txt.setColor(Color.RED);
-		txt.fill();
-		txt.drawString(message.toString(), 550, 60);
-		setImage(txt);
-
-		List<GasStation> gs = this.world.getObjects(GasStation.class);
-		GasStation g = gs.get(0);
-		g.ok = false;
-	}*/
 
 	public  void printReciept() {
 
 		List<DiscountType> discountTypes = new ArrayList<DiscountType>();
 		double totalPrice = 0.0;
 		double carWashPrice = 0.0;
+		double fuelPrice1 = 0.0;
+		double carWashPrice1 = 0.0;
 		//Calculate price based on fuel type
 		double fuelPrice = getWorld().getObjects(Clock.class).get(0).cost;
 		// Give discounts based on card type
@@ -82,23 +64,52 @@ public class PrintReceipt extends Screen implements IDisplayComponent
 		
 		for(DiscountType discountType : discountTypes){
 			if(discountType.equals(DiscountType.CAR_DISCOUNT))
-				carWashPrice = this.carWashPrice - this.carWashPrice * discountType.getDiscountPercent();
+				carWashPrice1 = this.carWashPrice * discountType.getDiscountPercent();
 			else
-				fuelPrice = fuelPrice - fuelPrice * discountType.getDiscountPercent();
+				fuelPrice1 = fuelPrice * discountType.getDiscountPercent();
 		}
-		totalPrice = carWashPrice + fuelPrice;
+		totalPrice = this.carWashPrice + fuelPrice - carWashPrice1 - fuelPrice1;
 		String fPrice = new DecimalFormat("#.##").format(fuelPrice);
 		String cwPrice = new DecimalFormat("#.##").format(carWashPrice);
 		String tPrice = new DecimalFormat("#.##").format(totalPrice);
-		Receipt receipt = new Receipt(true, ft, fPrice, getWorld().getObjects(PumpNozel.class).get(0).isCarwash, cwPrice, tPrice);
-		System.out.println(receipt.generateReceipt());
 		
-		int mouseX, mouseY;
-        MouseInfo mouse = Greenfoot.getMouseInfo();
-        mouseX = mouse.getX();
-        mouseY = mouse.getY();
+		StringBuilder message = new StringBuilder("  Welcome to Stallions Gas Station!");
+		message.append("\n1 WASHINGTON STREET \n SAN JOSE CA 95112\n");
+		message.append("-----------------------------------------------------------------\n");
+		message.append(ft.getLabel() + "           " + new DecimalFormat("##.##").format(fuelPrice));
+		message.append("\nCar Wash" + "                        " + new DecimalFormat("##.##").format(this.carWashPrice));
+		message.append("\n-----------------------------------------------------------------\n");
+		message.append("Subtotal" + "                        " + new DecimalFormat("##.##").format((this.carWashPrice + fuelPrice)));
+		message.append("\n-----------------------------------------------------------------");
+		if(carWashPrice1 > 0)
+			message.append("\nCar Wash Discount" + "           " + new DecimalFormat("##.##").format(carWashPrice1)+"-");
+		if(fuelPrice1 > 0)
+			message.append("\nCard Discount" + "                " + new DecimalFormat("##.##").format(fuelPrice1) +"-");
+		message.append("\n-----------------------------------------------------------------\n");
+		message.append("Total" + "                       " + new DecimalFormat("##.##").format(totalPrice));
+		message.append("\n-----------------------------------------------------------------");
+		Display d = getWorld().getObjects(Display.class).get(0);
         Display display = new Display(getWorld());
-        display.setText(mouseX, mouseY, receipt.generateReceipt());	}
+        getWorld().addObject(display, 100, 400);
+        display.setText(200, 250, message.toString());
+        System.out.println(message.toString());
+        playReceiptSoundInBackground();
+        d.clear();
+        d.setText("Thank You!");
+        getWorld().getObjects(Car.class).get(0).moveCar();
+       // Greenfoot.setWorld(new CarWashWorld());
+	}
+	
+	public void playReceiptSoundInBackground() {
+		GreenfootSound reciptSound = new GreenfootSound("printer.wav");
+		reciptSound.play();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		reciptSound.stop();
+	}
 
 }
 
