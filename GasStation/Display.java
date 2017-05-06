@@ -14,45 +14,81 @@ public class Display extends Screen implements IDisplayComponent
     public Display(World world) 
     {
     	this.world = world;
-		// TODO Auto-generated constructor stub
-
+   	
 		gi = new GreenfootImage(189,142); 
 		giReceipt = new GreenfootImage(250,300);
+//		gi.setColor(greenfoot.Color.BLUE);
+//       gi.fill();
+//        setImage(gi);
+              
 	}
   
 
     public void setText(String msg)
     {
-    	gi.clear();
-        gi.setColor(greenfoot.Color.WHITE);
-        gi.fill();
+    //	gi.clear();
+    	GreenfootImage inner= new GreenfootImage(msg, 19, Color.YELLOW, new Color(0, 0, 0, 96));
+    	 int wide = gi.getWidth();
+	     int high = gi.getHeight();
+	     int leftX = (wide - inner.getWidth())/2;
+	     int topY = (high - inner.getHeight())/2;
+	     
         gi.setColor(greenfoot.Color.BLACK);
         gi.setFont(gi.getFont().deriveFont(17f));
     	
     	if(msg=="OK")
     	{
-    		 gi.drawString(msg,153,100);
-    	        setImage(gi);
+//    		 gi.drawString(msg,165,100);
+//    	        setImage(gi);
+    		gi.drawImage(inner, 165, 85);
+	        setImage(gi);
     	}
-    	if(msg=="Cancel")
+    	else if(msg=="Cancel")
     	{
-    		 gi.drawString(msg,133,130);
+//    		 gi.drawString(msg,138,125);
+//    	        setImage(gi);
+    	        gi.drawImage(inner, 138, 110);
     	        setImage(gi);
     	}
-    	if(msg=="Yes")
+    	else if(msg=="Yes")
     	{
-    		 gi.drawString(msg,113,100);
-    	        setImage(gi);
+//    		 gi.drawString(msg,5,100);
+//    	        setImage(gi);
+    		gi.drawImage(inner, 5, 85);
+	        setImage(gi);
     	}
-         // Where 12 is the desired size.
+    	else if(msg=="No")
+    	{
+//    		 gi.drawString(msg,5,125);
+//    	        setImage(gi);
+    		gi.drawImage(inner, 5, 110);
+	        setImage(gi);
+    	}
+      
+    	else if(msg=="Help")
+    	{
+    
+    		gi.drawImage(inner, 5, 25);
+	        setImage(gi);
+	       
+//    		 gi.drawString(msg,5,40);
+//    	        setImage(gi);
+    	}
     	else
     	{
-    		gi.drawString(msg,15,40);
-    		setImage(gi);
+
+    	        gi.drawImage(inner, leftX, topY);
+    	        setImage(gi);
+    	       
         
     	}
        
      }
+    
+    public void clear()
+    {
+    	gi.clear();
+    }
     
     public void setText(int x, int y,String msg)
     {
@@ -69,7 +105,7 @@ public class Display extends Screen implements IDisplayComponent
     @Override
 	public void display() {
 		// TODO Auto-generated method stub
-		world.addObject((Actor) this, 448, 168);
+    	this.world.addObject(this, 448, 168);
 	}
 	/**
      * Act - do whatever the Display wants to do. This method is called whenever
@@ -78,11 +114,11 @@ public class Display extends Screen implements IDisplayComponent
     public void act()
     {
         // Add your action code here.
-    	/*MouseInfo mouse = Greenfoot.getMouseInfo();
-    	 if (Greenfoot.mouseClicked(null))
-         {
-        	System.out.println("x "+mouse.getX()+" y: "+mouse.getY());
-         }*/
+//     	MouseInfo mouse = Greenfoot.getMouseInfo();
+//     	 if (Greenfoot.mouseClicked(null))
+//          {
+//          	System.out.println("x "+mouse.getX()+" y: "+mouse.getY());
+//          }
 //    	if(Greenfoot.mousePressed(this))
 //        {
 //            World world = getWorld();
