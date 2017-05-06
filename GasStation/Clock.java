@@ -11,7 +11,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Clock extends Actor
 {
 
-	public double gallons = -0.1;
+	public double gallons = 0;
 
 	private long lastCurrentSecond;
 	private long timeSaved = 0;
@@ -19,6 +19,7 @@ public class Clock extends Actor
 	public boolean drawGas = false;
 	public boolean tankFull = false;
 	GreenfootImage gi ;
+	String gallonsDone = "gallons";
 	
 	
 	public Clock() {
@@ -38,25 +39,28 @@ public class Clock extends Actor
 	}
 
 	public void act() {
-		setImage(gi);
-		if ((drawGas && !tankFull)) {
+		
+		setText(this.gallonsDone);
 
-			if (gallons>17.9) {
+	}
+	
+	
+	public void drawGas(){
+		setImage(gi);
+		
+		
+
+		if (!tankFull) {
+			if (gallons>18.00) {
 				tankFull = true;
 				stopClock();
-
-				setText("Tank Full");
+				this.gallonsDone = "Tank Full ";
 			}
-			else if ((System.currentTimeMillis() - lastCurrentSecond >= 10)) {
-				lastCurrentSecond += 10;
-				gallons = gallons + 0.1;
-
-				String gallonsDone;
-				gallonsDone = "gallons "+ new DecimalFormat(("00.00")).format(gallons);
-
-				setText(gallonsDone);
+			else if ((System.currentTimeMillis() - lastCurrentSecond >= 100)) {
+				lastCurrentSecond += 100;
+				gallons = gallons + 0.01;
+				this.gallonsDone = "gallons "+ new DecimalFormat(("00.00")).format(gallons);
 			}
-
 		}
 	}
 
@@ -100,7 +104,7 @@ public class Clock extends Actor
 		//drawGas = true;
 	}
 	public void stopClock() {
-		//		timeSaved = System.currentTimeMillis() - lastCurrentSecond;
+		timeSaved = System.currentTimeMillis() - lastCurrentSecond;
 		//drawGas = false;
 	}
 	public void resetClock() {
