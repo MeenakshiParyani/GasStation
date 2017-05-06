@@ -33,12 +33,15 @@ public class GasOptions extends Screen implements IDisplayComponent
     	MouseInfo mouse = Greenfoot.getMouseInfo();
     		if(mouse.getX() >= 652 && mouse.getX() <= 696 && mouse.getY() >= 390 && mouse.getY() <= 445) {
     			System.out.println("87");
+    			getWorld().getObjects(PumpNozel.class).get(0).draw = true;
     		}
     		if(mouse.getX() >= 701 && mouse.getX() <= 747 && mouse.getY() >= 390 && mouse.getY() <= 445) {
     			System.out.println("89");
+    			getWorld().getObjects(PumpNozel.class).get(0).draw = true;
     		}
     		if(mouse.getX() >= 752 && mouse.getX() <= 798 && mouse.getY() >= 390 && mouse.getY() <= 445) {
     			System.out.println("93");
+    			getWorld().getObjects(PumpNozel.class).get(0).draw = true;
     		}
     }
     
