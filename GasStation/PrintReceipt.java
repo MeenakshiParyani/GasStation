@@ -82,9 +82,9 @@ public class PrintReceipt extends Screen implements IDisplayComponent
 		message.append("Subtotal" + "                        " + new DecimalFormat("##.##").format((this.carWashPrice + fuelPrice)));
 		message.append("\n-----------------------------------------------------------------");
 		if(carWashPrice1 > 0)
-			message.append("\nCar Wash Discount" + "           " + new DecimalFormat("##.##").format(carWashPrice1)+"-");
+			message.append("\nCar Wash Discount" + "           "+ "-" + new DecimalFormat("##.##").format(carWashPrice1) );
 		if(fuelPrice1 > 0)
-			message.append("\nCard Discount" + "                " + new DecimalFormat("##.##").format(fuelPrice1) +"-");
+			message.append("\nCard Discount" + "                " +"-" + new DecimalFormat("##.##").format(fuelPrice1) );
 		message.append("\n-----------------------------------------------------------------\n");
 		message.append("Total" + "                       " + new DecimalFormat("##.##").format(totalPrice));
 		message.append("\n-----------------------------------------------------------------");

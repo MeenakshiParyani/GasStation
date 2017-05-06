@@ -44,6 +44,11 @@ public class PrintReceiver implements Receiver {
 		// TODO Auto-generated method stub
 		d.clear();
     	d.setText("ThankYou!");
+    	try{
+    		Thread.sleep(1000);
+    	} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
     	Greenfoot.setWorld(new MyWorld());
 		
 	}

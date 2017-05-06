@@ -76,7 +76,7 @@ public class Clock extends Actor
 		} else if(p.fuelType == 93) {
 			cost = gallons * FuelType.PREMIUM_UNLEADED.getPrice();
 		}
-		this.gallonsDone = "gallons: - "+ new DecimalFormat(("00.00")).format(gallons) + "\n" + "cost: - "+ new DecimalFormat(("00.00")).format(cost);
+		this.gallonsDone = "gallons:  "+ new DecimalFormat(("00.00")).format(gallons) + "\n" + "cost:   "+ new DecimalFormat(("00.00")).format(cost);
 			}
 		}
 	}

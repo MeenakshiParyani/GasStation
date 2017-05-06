@@ -15,7 +15,7 @@ public class PumpNozel extends Screen implements IDisplayComponent
 	public boolean draw = true;
 	public boolean dispenseStart = false;
 	public boolean receiptCalled = false;
-	public int fuelType = 87;
+	public int fuelType = 0;
 	public boolean carWash = false;
 	Display d  =null;
 	Receiver pr =null;
@@ -53,7 +53,7 @@ public class PumpNozel extends Screen implements IDisplayComponent
 		Actor nozzleHolder  = getOneIntersectingObject(NozzleHolder.class);
 
 
-		if(draw==true && pumpNozel!=null){
+		if(fuelType > 0 && draw==true && pumpNozel!=null){
 			c.drawGas();
 			c.fuellingStart = true;
 
