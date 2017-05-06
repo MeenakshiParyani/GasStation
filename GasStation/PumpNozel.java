@@ -12,7 +12,7 @@ public class PumpNozel extends Screen implements IDisplayComponent
 {	
 	private World world;
 	Clock c = new Clock();
-	public boolean draw = true;
+	public boolean draw = false;
 	public boolean dispenseStart = false;
 	public boolean receiptCalled = false;
 	public int fuelType = 0;
@@ -42,13 +42,14 @@ public class PumpNozel extends Screen implements IDisplayComponent
 		int mouseX, mouseY;
 
 
+		if(draw){
 		if(Greenfoot.mouseDragged(this))  
 		{
 			MouseInfo mouse = Greenfoot.getMouseInfo();
 			mouseX=mouse.getX();
 			mouseY=mouse.getY();
 			setLocation(mouseX, mouseY);
-		}
+		}}
 		Actor pumpNozel = getOneIntersectingObject(Car.class);
 		Actor nozzleHolder  = getOneIntersectingObject(NozzleHolder.class);
 
@@ -63,8 +64,17 @@ public class PumpNozel extends Screen implements IDisplayComponent
 			
 		}
 
-		if(c.fuellingStart && c.fuellingDone && !receiptCalled){
+		if(c.fuellingStart && c.fuellingDone && !receiptCalled && !c.tankFull ){
 			draw = false;
+			carWash();
+			callReceipt();
+		}
+		
+
+		if(nozzleHolder==null && c.tankFull){
+			
+			//PumpNozel p = getWorld().getObjects(PumpNozel.class).get(0);
+			setLocation(800, 150);
 			carWash();
 			callReceipt();
 		}
