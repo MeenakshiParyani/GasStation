@@ -18,12 +18,13 @@ public class NoCard implements CardState {
     	d.setText("Help");
     	d.setText("Cancel");
 		d.setText("Processing...Please wait!");
+		Greenfoot.delay(100);
 		cardMachine.setCardState(cardMachine.getYesCardState());
-		try {
+		/*try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		
 		

@@ -4,11 +4,13 @@ public class PrintReceiver implements Receiver {
 
 	Display d = null;
 	PrintReceipt p = null;
+	boolean isCarwash;
 	
-	public PrintReceiver(Display d,PrintReceipt p)
+	public PrintReceiver(Display d,PrintReceipt p, boolean isCarwash)
 	{
 		this.d = d;
 		this.p = p;
+		this.isCarwash = isCarwash;
 	}
 	@Override
 	public void doOkAction() {
@@ -30,10 +32,11 @@ public class PrintReceiver implements Receiver {
 
 	@Override
 	public void doYesAction() {
-		
+		Greenfoot.delay(5);
 		// TODO Auto-generated method stub
 		d.clear();
     	d.setText("Please Wait...Printing!");
+    	Greenfoot.delay(100);
     	p.printReciept();
 	
 	
@@ -44,12 +47,10 @@ public class PrintReceiver implements Receiver {
 		// TODO Auto-generated method stub
 		d.clear();
     	d.setText("ThankYou!");
-    	try{
-    		Thread.sleep(1000);
-    	} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-    	Greenfoot.setWorld(new MyWorld());
+    	Greenfoot.delay(100);
+    	if(isCarwash)
+    		Greenfoot.setWorld(new CarWashWorld());
+    	else Greenfoot.setWorld(new MyWorld());
 		
 	}
 

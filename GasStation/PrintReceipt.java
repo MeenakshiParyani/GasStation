@@ -96,8 +96,11 @@ public class PrintReceipt extends Screen implements IDisplayComponent
         playReceiptSoundInBackground();
         d.clear();
         d.setText("Thank You!");
-        getWorld().getObjects(Car.class).get(0).moveCar();
-       // Greenfoot.setWorld(new CarWashWorld());
+        Greenfoot.delay(100);
+        for(DiscountType discountType : discountTypes){
+			if(discountType.equals(DiscountType.CAR_DISCOUNT))
+				Greenfoot.setWorld(new CarWashWorld());
+        }
 	}
 	
 	public void playReceiptSoundInBackground() {

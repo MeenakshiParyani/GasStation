@@ -75,7 +75,7 @@ public class PumpNozel extends Screen implements IDisplayComponent
 	        d=getWorld().getObjects(Display.class).get(0);
 			PrintReceipt p = getWorld().getObjects(PrintReceipt.class).get(0);
 	        
-			this.prr = new PrintReceiver(d,p);
+			
 	   	 	if (Greenfoot.mousePressed(null)  )
 	   			 {
 	   	 			if (mouse != null && mouse.getX() >= 319 && mouse.getX()<=333 && mouse.getY() >= 180 && mouse.getY() <= 196)
@@ -84,6 +84,7 @@ public class PumpNozel extends Screen implements IDisplayComponent
 	   	 				this.yc = new YesCommand(pr);
 	   	 				in = new Invoker(yc);
 	   	 				in.execute();
+	   	 				this.prr = new PrintReceiver(d,p,true);
 	   	 				isCarwash = true;
 	   	 				isCar = false;
 	   	 				isPrint = true;
@@ -102,6 +103,7 @@ public class PumpNozel extends Screen implements IDisplayComponent
 	   	 				this.nc = new NoCommand(pr);
 	   	 				in = new Invoker(nc);
 	   	 				in.execute();
+	   	 				this.prr = new PrintReceiver(d,p,false);
 	   	 				isCarwash = false;
 	   	 				isCar = false;
 	   	 				isPrint = true;
