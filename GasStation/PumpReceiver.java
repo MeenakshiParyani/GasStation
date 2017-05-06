@@ -44,7 +44,7 @@ public class PumpReceiver implements Receiver {
 		d.setText("Yes");
 		d.setText("No");
     	d.setText("Help");
-    	d.setText("Do you want to print Receipt?");
+    	d.setText("Do you want to \n print Receipt?");
 		
 	}
 

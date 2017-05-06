@@ -44,7 +44,6 @@ public class PumpNozel extends Screen implements IDisplayComponent
 
 		if(Greenfoot.mouseDragged(this))  
 		{
-			//System.out.println("dragging");
 			MouseInfo mouse = Greenfoot.getMouseInfo();
 			mouseX=mouse.getX();
 			mouseY=mouse.getY();
@@ -79,10 +78,8 @@ public class PumpNozel extends Screen implements IDisplayComponent
 			this.prr = new PrintReceiver(d,p);
 	   	 	if (Greenfoot.mousePressed(null)  )
 	   			 {
-	   	 			System.out.println("X   Y" + mouse.getX() + " " + mouse.getY());
 	   	 			if (mouse != null && mouse.getX() >= 319 && mouse.getX()<=333 && mouse.getY() >= 180 && mouse.getY() <= 196)
 	   	 			{
-	   	 				System.out.println("Yes");
 	   	 				if(!isPrint) {
 	   	 				this.yc = new YesCommand(pr);
 	   	 				in = new Invoker(yc);
@@ -91,7 +88,6 @@ public class PumpNozel extends Screen implements IDisplayComponent
 	   	 				isCar = false;
 	   	 				isPrint = true;
 	   	 				} else {
-	   	 				System.out.println("Yes2");
 	   	 				this.yc = new YesCommand(prr);
 	   	 				in = new Invoker(yc);
 	   	 				in.execute();
@@ -101,7 +97,6 @@ public class PumpNozel extends Screen implements IDisplayComponent
 	   	 			}
 	   	 			if (mouse != null && mouse.getX() >= 319 && mouse.getX()<=333 && mouse.getY() >= 208 && mouse.getY() <= 225)
 	   	 			{
-	   	 				System.out.println(isPrint);
 	   	 				if(!isPrint) {
 	   	 				System.out.println("No");
 	   	 				this.nc = new NoCommand(pr);
@@ -111,7 +106,6 @@ public class PumpNozel extends Screen implements IDisplayComponent
 	   	 				isCar = false;
 	   	 				isPrint = true;
 	   	 				} else {
-	   	 				System.out.println("No2");
 	   	 				this.nc = new NoCommand(prr);
 	   	 				in = new Invoker(nc);
 	   	 				in.execute();
@@ -127,46 +121,6 @@ public class PumpNozel extends Screen implements IDisplayComponent
 			}
 		}	
 		
-		/*if (receiptCalled && !isCar && isPrint)
-		{
-			System.out.println("Print");
-			d=getWorld().getObjects(Display.class).get(0);
-			PrintReceipt p = getWorld().getObjects(PrintReceipt.class).get(0);
-	        
-			this.prr = new PrintReceiver(d,p);
-	        MouseInfo mouse = Greenfoot.getMouseInfo();
-	        
-	   	 	if (Greenfoot.mousePressed(null)  )
-	   			 {
-	   	 			//System.out.println("X   Y" + mouse.getX() + " " + mouse.getY());
-	   	 			if (mouse != null && mouse.getX() >= 319 && mouse.getX()<=333 && mouse.getY() >= 180 && mouse.getY() <= 196)
-	   	 			{
-	   	 				System.out.println("Yes");
-	   	 				this.yc = new YesCommand(prr);
-	   	 				in = new Invoker(yc);
-	   	 				in.execute();
-	   	 				isCarwash = true;
-	   	 				//isCar = false;
-	   	 				isPrint = false;
-					 
-	   	 			}
-	   	 			if (mouse != null && mouse.getX() >= 319 && mouse.getX()<=333 && mouse.getY() >= 208 && mouse.getY() <= 225)
-	   	 			{
-	   	 				System.out.println("No");
-	   	 				this.nc = new NoCommand(prr);
-	   	 				in = new Invoker(nc);
-	   	 				in.execute();
-	   	 				isCarwash = false;
-	   	 				//isCar = false;
-	   	 				isPrint = false;
-					 
-	   	 			}
-				if (mouse != null && mouse.getX() >= 319 && mouse.getX()<=333 && mouse.getY() >= 121 && mouse.getY() <= 136)
-				 {
-					 System.out.println("Help");
-				 }
-			}
-		}*/
 		this.getWorld().addObject(c, 725, 259);
 	}
 
@@ -185,7 +139,6 @@ public class PumpNozel extends Screen implements IDisplayComponent
 
 
 	public void callReceipt(){
-		System.out.println("hi");
 		
 		d=getWorld().getObjects(Display.class).get(0);
 		this.pr = new PumpReceiver(d);

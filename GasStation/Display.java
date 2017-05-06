@@ -77,9 +77,17 @@ public class Display extends Screen implements IDisplayComponent
     	}
     	else
     	{
-    		gi.setFont(gi.getFont().deriveFont(10f));
+    		
+    		
+    		gi.setFont(gi.getFont().deriveFont(12f));
     	        gi.drawImage(inner, leftX, topY);
     	        setImage(gi);
+    	        
+    	        try {
+        			Thread.sleep(200);
+        		} catch (InterruptedException e) {
+        			e.printStackTrace();
+        		}
     	       
         
     	}

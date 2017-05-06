@@ -14,8 +14,9 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 	
 	private String zipcode = "90210";
 	boolean authenticated = false;
+	Display d = null;
 	
-	public ZipcodeMachine() {
+	public ZipcodeMachine(Display d) {
 		zip0 = new NoZipcodeDigit(this);
 		zip1 = new OneZipcodeDigit(this);
 		zip2 = new TwoZipcodeDigit(this);
@@ -23,6 +24,7 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 		zip4 = new FourZipcodeDigit(this);
 		zip5 = new FiveZipcodeDigit(this);
 		this.state = zip0;
+		this.d =d;
 	}
 	
 	public String getCurrentState()
@@ -59,11 +61,11 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 		// TODO Auto-generated method stub
 		this.count = 0;
 		this.state = zip0;
-		this.d1 = "" ;
-        this.d2 = "" ;
-        this.d3 = "" ;
-        this.d4 = "" ;
-        this.d5 = "" ;
+		this.d1 = "*" ;
+        this.d2 = "*" ;
+        this.d3 = "*" ;
+        this.d4 = "*" ;
+        this.d5 = "*" ;
         display() ;
 	}
 
@@ -74,7 +76,9 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 		this.state = zip1;
 		if(digit == null)
 			this.d2 = "*";
-		else this.d1 = digit;
+		else{ this.d1 = digit;
+			  this.d2 = "*";
+		}
         this.d3 = "*" ;
         this.d4 = "*" ;
         this.d5 = "*" ;
@@ -89,8 +93,8 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 		if(digit == null)
 			this.d3 = "*";
 		else this.d2 = digit;
-        this.d4 = "" ;
-        this.d5 = "" ;
+        this.d4 = "*" ;
+        this.d5 = "*" ;
         display() ;
 	}
 
@@ -102,7 +106,7 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 		if(digit == null)
 			this.d4 = "*";
 		else this.d3 = digit;
-        this.d5 = "" ;
+        this.d5 = "*" ;
         display() ;
 	}
 
@@ -129,22 +133,39 @@ public class ZipcodeMachine implements IZipcodeStateMachine {
 	@Override
 	public void authenticateZipcode() {
 		// TODO Auto-generated method stub
-		System.out.println( "Authenticating..." ) ;
+    	d.clear();
+    	d.setText("Help");
+    	d.setText("Cancel");
+
+		d.setText( "Authenticating..." ) ;
         if ( zipcode.equals( d1+d2+d3+d4+d5 ) )
         {
-            System.out.println( "Success!" ) ;
+        	d.clear();
+        	d.setText("Help");
+        	d.setText("Cancel");
+
+        	d.setText( "Choose Your Gas!" ) ;
             this.authenticated = true ;
             this.state.validZipcode();
         }
         else
         {
-            System.out.println( "Failed!" ) ;
+        	d.clear();
+        	d.setText("Help");
+        	d.setText("Cancel");
+
+        	
+        	d.setText( "Authentication Failed!" ) ;
             setStateNoZipcodeDigits() ;
         }
 	}
 	
 	public void display() {
-		System.out.println(d1 + " " + d2 + " " + d3 + " " + d4 + " " + d5);
+    	d.clear();
+    	d.setText("Help");
+    	d.setText("Cancel");
+
+		d.setText(d1 + " " + d2 + " " + d3 + " " + d4 + " " + d5);
 	}
 
 	@Override

@@ -1,29 +1,39 @@
 public class HasPin implements CardState {
 	
 	CardMachine cardMachine;
+	Display d;
 	
-	public HasPin(CardMachine newCardMachine){
+	public HasPin(CardMachine newCardMachine, Display d){
 		
 		cardMachine = newCardMachine;
-		
+		this.d =d;
 	}
 
 	public void insertCard() {
+    	d.clear();
+    	d.setText("Help");
+    	d.setText("Cancel");
 		
-		System.out.println("You already entered a card");
+		d.setText("You already entered a card");
 		
 	}
 
 	public void ejectCard() {
-		
-		System.out.println("Your card is ejected");
+    	d.clear();
+    	d.setText("Help");
+    	d.setText("Cancel");
+	
+		d.setText("Your card is ejected");
 		cardMachine.setCardState(cardMachine.getNoCardState());
 		
 	}
 
 	public void insertPin() {
-		
-		System.out.println("You already entered Pin");
+    	d.clear();
+    	d.setText("Help");
+    	d.setText("Cancel");
+	
+		d.setText("You already entered Pin");
 		
 	}	
 }

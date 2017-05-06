@@ -25,7 +25,7 @@ public class Clock extends Actor
 	
 	
 	public Clock() {
-		gi = new GreenfootImage(100,40);
+		gi = new GreenfootImage(120,60);
 	}
 
 
@@ -34,10 +34,20 @@ public class Clock extends Actor
 		gi.clear();
 		gi.setColor(greenfoot.Color.YELLOW);
 		gi.fill();
-		gi.setColor(greenfoot.Color.BLACK);
-		gi.setFont(gi.getFont().deriveFont(10f)); 
-		gi.drawString(msg,10,10);
 
+	   	GreenfootImage inner= new GreenfootImage(msg, 19, Color.BLACK, new Color(0, 0, 0, 96));
+   	 int wide = gi.getWidth();
+	     int high = gi.getHeight();
+	     int leftX = (wide - inner.getWidth())/2;
+	     int topY = (high - inner.getHeight())/2;
+	     
+       gi.setColor(greenfoot.Color.YELLOW);
+       gi.setFont(gi.getFont().deriveFont(10f));
+       gi.drawImage(inner, leftX, topY);
+       setImage(gi);
+
+		
+		
 	}
 
 	public void act() {
@@ -66,43 +76,10 @@ public class Clock extends Actor
 		} else if(p.fuelType == 93) {
 			cost = gallons * FuelType.PREMIUM_UNLEADED.getPrice();
 		}
-		this.gallonsDone = "gallons "+ new DecimalFormat(("00.00")).format(gallons) + "\n" + "cost "+ new DecimalFormat(("00.00")).format(cost);
+		this.gallonsDone = "gallons: - "+ new DecimalFormat(("00.00")).format(gallons) + "\n" + "cost: - "+ new DecimalFormat(("00.00")).format(cost);
 			}
 		}
 	}
-
-	//	private void drawTime() {
-	//
-	//		System.out.println("drawing gas");
-	//
-	//		//        int sec = seconds % 60;
-	//
-	//		//getImage().clear();
-	//
-	//		//GreenfootImage gi = new GreenfootImage(189,142);
-	//
-	//		//gi.scale(130, 70);
-	//		//        getImage().setColor(greenfoot.Color.GRAY);
-	//		//        getImage().fill();
-	//
-	//
-	//		//        text.drawImage(text, 850, 50);
-	//		//        time.drawImage(time, 870, 30);
-	//
-	//
-	//
-	//		//        setImage(new GreenfootImage("", 30, greenfoot.Color.BLACK, new greenfoot.Color(0, 0, 0, 0)));
-	//		//
-	//		//        setImage(new GreenfootImage("Time left:", 30, greenfoot.Color.BLACK, new greenfoot.Color(0, 0, 0, 0)));
-	//		//        setImage(new GreenfootImage(remainingTime, 40, greenfoot.Color.BLACK, new greenfoot.Color(0, 0, 0, 0)));
-	//		//       
-	//
-	//
-	//	}
-
-
-
-
 
 	public void startClock() {
 

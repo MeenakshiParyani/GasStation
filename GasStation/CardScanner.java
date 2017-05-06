@@ -21,8 +21,6 @@ public class CardScanner extends Screen implements IDisplayComponent
     
     public CardScanner(World world) {
         this.world = world;
-        this.cardmachine = new CardMachine();
-        this.zipcodemachine = new ZipcodeMachine();
         this.r  = new CreditReceiver();
         
     }
@@ -42,11 +40,10 @@ public class CardScanner extends Screen implements IDisplayComponent
         if (getOneIntersectingObject(Card.class) != null)
         {
         	
+ 
         	
             c = (Card)getOneIntersectingObject(Card.class);
             
-         
-            System.out.println("c.getClass" + c.getClass());
             
         if ( c.getClass() == ChaseCC.class)
         {
@@ -58,7 +55,6 @@ public class CardScanner extends Screen implements IDisplayComponent
         		cardmachine.insertPin();
         		flag = false;
         	}
-           // System.out.println("Insert Zip Code");
             
         }
         if ( c.getClass() == FakeCC.class && f)
@@ -81,11 +77,6 @@ public class CardScanner extends Screen implements IDisplayComponent
         		cardmachine.insertPin();
         		flag = false;
         	}
-
-        		
-          //  System.out.println("Insert Zip Code");
-
-            
         }
         }
                 
@@ -95,10 +86,8 @@ public class CardScanner extends Screen implements IDisplayComponent
    		 
    			 if ((mouse != null) && (!flag) && cardmachine.cardState.getClass().getCanonicalName() == cardmachine.hasCorrectPin.getClass().getCanonicalName())
         {
-   		//System.out.println("After" );
    		 	if (mouse.getX() >= 370 && mouse.getX()<=525 && mouse.getY() >= 280 && mouse.getY() <= 450)
    		 	{
-   		 //		System.out.println("Box");
    		 		if (mouse.getX() >= 379 && mouse.getX()<=403 && mouse.getY() >= 291 && mouse.getY() <= 315)
    		 		{
    		 			zipcodemachine.number("1");
@@ -151,8 +140,9 @@ public class CardScanner extends Screen implements IDisplayComponent
    		 		{
    		 			zipcodemachine.enter();
    		 			if(zipcodemachine.validZipcode() ) {
+   		 				boolean vaildZip = true;
    		 				getWorld().getObjects(GasOptions.class).get(0).setCard(c);
-   		 				getWorld().getObjects(GasOptions.class).get(0).act1();
+   		 				getWorld().getObjects(GasOptions.class).get(0).act1(vaildZip);
    		 				
    		 			}
    		 		}
@@ -176,12 +166,15 @@ public class CardScanner extends Screen implements IDisplayComponent
     }
 
     private void display_screen() {
-		// TODO Auto-generated method stub
     	Display d  =getWorld().getObjects(Display.class).get(0);
+        this.cardmachine = new CardMachine(d);
+        this.zipcodemachine = new ZipcodeMachine(d);
+
     	
     	d.clear();
     	d.setText("Help");
     	d.setText("Cancel");
+		d.setText("Scan Your Card!");
     	disp_screen = false;
 	}
 

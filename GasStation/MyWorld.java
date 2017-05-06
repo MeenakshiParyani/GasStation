@@ -38,6 +38,16 @@ public class MyWorld extends World
 		card.addSubComponent(discoverCreditCard);
 		card.addSubComponent(chaseCreditCard);
 		card.addSubComponent(fakeCreditCard);
+		
+		screen.addSubComponent(gasStation);
+		//      screen.addSubComponent(carWashArea);
+		screen.addSubComponent(card);
+		screen.addSubComponent(display);
+		PumpNozel pumpNozel = new PumpNozel(this);
+		screen.addSubComponent(pumpNozel);
+		screen.addSubComponent(nozzleHolder);
+		screen.addSubComponent(car);
+
 
 		PrintReceipt printer = new PrintReceipt(this);
 		CardScanner scanner = new CardScanner(this);
@@ -54,19 +64,12 @@ public class MyWorld extends World
 
 		//composite pattern for the whole screen        
 
-		screen.addSubComponent(gasStation);
-		//      screen.addSubComponent(carWashArea);
-		screen.addSubComponent(card);
-		screen.addSubComponent(display);
-		PumpNozel pumpNozel = new PumpNozel(this);
-		screen.addSubComponent(pumpNozel);
-		screen.addSubComponent(nozzleHolder);
-		screen.addSubComponent(car);
 		
-
-
 		addObject(screen, 50, 50);
-
+	/*	display.clear();
+		display.setText("Scan Your Card!");
+*/
+		
 		//     This should be called when customer asks for a car wash from the respective class
 		//      Greenfoot.setWorld(new CarWashWorld());
 	}

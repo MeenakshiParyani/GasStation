@@ -5,13 +5,15 @@ public class CardMachine  {
 	CardState hasCorrectPin;
 	
 	CardState cardState;
+	Display d = null;
 	
 	boolean correctPinEntered = false;
 	
-	public CardMachine(){
-		hasCard = new HasCard(this);
-		noCard = new NoCard(this);
-		hasCorrectPin = new HasPin(this);
+	public CardMachine(Display d){
+		this.d =d;
+		hasCard = new HasCard(this,d);
+		noCard = new NoCard(this,d);
+		hasCorrectPin = new HasPin(this,d);
 		
 		cardState = noCard;
 				

@@ -3,35 +3,47 @@ import greenfoot.Greenfoot;
 public class NoCard implements CardState {
 	
 	CardMachine cardMachine;
+	Display d;
 	
-	public NoCard(CardMachine newCardMachine){
+	public NoCard(CardMachine newCardMachine, Display d){
 		
 		cardMachine = newCardMachine;
+		this.d=d;
 		
 	}
 
 	public void insertCard() {
 		
-		System.out.println("Processing...Please wait!");
+    	d.clear();
+    	d.setText("Help");
+    	d.setText("Cancel");
+		d.setText("Processing...Please wait!");
+		cardMachine.setCardState(cardMachine.getYesCardState());
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		cardMachine.setCardState(cardMachine.getYesCardState());
+		
 		
 		
 	}
 
 	public void ejectCard() {
 		
-		System.out.println("You didn't enter a card");
+    	d.clear();
+    	d.setText("Help");
+    	d.setText("Cancel");
+		d.setText("You didn't enter a card");
 		
 	}
 
 	public void insertPin() {
 		
-		System.out.println("You have not entered your card");
+    	d.clear();
+    	d.setText("Help");
+    	d.setText("Cancel");
+		d.setText("You have not entered your card");
 		
 	}
 }
