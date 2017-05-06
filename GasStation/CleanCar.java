@@ -23,7 +23,7 @@ public class CleanCar extends Car
     public void act() 
     {
         // Add your action code here.
-    //	turn(-5);
+    	if(getWorld().getObjects(CleanCar.class).get(0).isAtEdge()) Greenfoot.setWorld(new MyWorld());
     	move(2);
     }    
 }
