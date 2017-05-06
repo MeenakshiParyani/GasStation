@@ -38,7 +38,14 @@ public class PrintReceiver implements Receiver {
     	d.setText("Please Wait...Printing!");
     	Greenfoot.delay(100);
     	p.printReciept();
-	
+    	if(isCarwash) {
+    		Greenfoot.delay(100);
+    		Greenfoot.setWorld(new CarWashWorld());
+    	} else {
+    		Greenfoot.delay(100);
+    		Greenfoot.setWorld(new MyWorld());
+    	}
+    		
 	
 	}
 

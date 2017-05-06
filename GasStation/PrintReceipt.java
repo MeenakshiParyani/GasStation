@@ -97,10 +97,6 @@ public class PrintReceipt extends Screen implements IDisplayComponent
         d.clear();
         d.setText("Thank You!");
         Greenfoot.delay(100);
-        for(DiscountType discountType : discountTypes){
-			if(discountType.equals(DiscountType.CAR_DISCOUNT))
-				Greenfoot.setWorld(new CarWashWorld());
-        }
 	}
 	
 	public void playReceiptSoundInBackground() {
